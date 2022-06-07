@@ -1,0 +1,175 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"
+            integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+            crossorigin="anonymous"></script>
+    <!-- favicon -->
+
+    <!--자바스크립트, 스타일시트 파일 불러오기-->
+    <link rel="stylesheet" href="/detail.css">
+    <link rel="script" href="/detail.js">
+
+    <title>[웹소설] 웹.타.추</title>
+</head>
+
+<body>
+<header></header>
+<div class="wrap">
+    <div class="profile">
+        <div class="cover"></div>
+        <div class="profile-side">
+            <div class="title mb10">데뷔 못 하면 죽는 병 걸림</div>
+            <div class="star-wrap mb10">
+                <div class="star-ratings">
+                    <div class="star-ratings-fill space-x"
+                         :style="{ width: ratingToPercent + '%' }">
+                        <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+                    </div>
+                    <div class="star-ratings-base space-x">
+                        <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <div class="book-details mb10">
+                    <b>현대판타지</b> | <b>글</b> 백덕수 | <b>출판사</b> kwbooks
+                </div>
+                <div class="keyword-box">
+                    <span>핵인싸인</span> <span>스타일리시한</span> <span>오열하는</span> <span>울컥하는</span>
+                    <span>감동의쓰나미인</span> <span>하드캐리하는</span> <span>레전드찍는</span> <span>레트로한</span>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <div class="story">
+        <b>작품소개</b>
+        <p>4년차 공시생,
+            <br>낯선 몸에 빙의해 3년 전으로 돌아왔다.
+            <br>
+            <br>그리고 그의 눈앞에 나타난 갑작스러운 상태창의 협박!
+            <br>
+            <br>[돌발!]
+            <br>[상태이상 : '데뷔가 아니면 죽음을' 발생!]
+            <br>
+            <br>돌연사 위협 때문에팔자에도 없던 아이돌에 도전하게 된주인공의 대환장 일지.
+            <br>※특이사항 : 빙의 전 아이돌 데이터 찍어다 팔았었음.
+        </p>
+    </div>
+    <hr style="border: solid 1px mediumspringgreen; width:1000px; margin:auto;">
+    <div class="review-detail">
+        <b>이 책의 리뷰 (5개)</b>
+    </div>
+    <div class="reviews">
+        <div class="review mb10">
+            <div class="star-ratings">
+                <div class="star-ratings-fill space-x"
+                     :style="{ width: ratingToPercent + '%' }">
+                    <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+                </div>
+                <div class="star-ratings-base space-x">
+                    <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+                </div>
+            </div>
+            <div>
+                <div class="reviewer">
+                    <b>username</b><span>| 2022.06.05</span>
+                </div>
+                <div>
+                    리뷰가 이러케 저러케...
+                    <br>리뷰가 이러케 저러케...
+                    <br>리뷰가 이러케 저러케...
+                    <br>리뷰가 이러케 저러케...
+                </div>
+            </div>
+        </div>
+        <div class="review mb10">
+            <div class="star-ratings">
+                <div class="star-ratings-fill space-x"
+                     :style="{ width: ratingToPercent + '%' }">
+                    <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+                </div>
+                <div class="star-ratings-base space-x">
+                    <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+                </div>
+            </div>
+            <div>
+                <div class="reviewer">
+                    <b>username</b><span>| 2022.06.05</span>
+                </div>
+                <div>
+                    리뷰가 이러케 저러케...
+                </div>
+            </div>
+        </div>
+        <div class="review mb10">
+            <div class="star-ratings">
+                <div class="star-ratings-fill space-x"
+                     :style="{ width: ratingToPercent + '%' }">
+                    <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+                </div>
+                <div class="star-ratings-base space-x">
+                    <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+                </div>
+            </div>
+            <div>
+                <div class="reviewer">
+                    <b>username</b><span>| 2022.06.05</span>
+                </div>
+                <div>
+                    리뷰가 이러케 저러케...
+                </div>
+            </div>
+        </div>
+        <div class="review mb10">
+            <div class="star-ratings">
+                <div class="star-ratings-fill space-x"
+                     :style="{ width: ratingToPercent + '%' }">
+                    <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+                </div>
+                <div class="star-ratings-base space-x">
+                    <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+                </div>
+            </div>
+            <div>
+                <div class="reviewer">
+                    <b>username</b><span>| 2022.06.05</span>
+                </div>
+                <div>
+                    리뷰가 이러케 저러케...
+                </div>
+            </div>
+        </div>
+        <div class="review mb10">
+            <div class="star-ratings">
+                <div class="star-ratings-fill space-x"
+                     :style="{ width: ratingToPercent + '%' }">
+                    <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+                </div>
+                <div class="star-ratings-base space-x">
+                    <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+                </div>
+            </div>
+            <div>
+                <div class="reviewer">
+                    <b>username</b><span>| 2022.06.05</span>
+                </div>
+                <div>
+                    리뷰가 이러케 저러케...
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<footer></footer>
+</body>
+
+</html>

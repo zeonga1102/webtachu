@@ -1,0 +1,97 @@
+* {
+  font-family: "Yu Gothic";
+}
+.space-x {  letter-spacing: 5px;  }
+
+.mb10 {
+  margin-bottom: 10px;
+}
+
+.wrap {
+  width: 1000px;
+  height: auto;
+  display: grid;
+  justify-content: center;
+  margin: auto;
+}
+
+.profile
+{
+  width: 1000px;
+  margin-top: 50px;
+  display:flex;
+  flex-direction: row;
+}
+
+.cover {
+  background-image: url('https://w.namu.la/s/aed28a712aa9f45718163ffe7896d3670ca32ff30ecdfb137bf8740b95815b5d6aad6ebb31133dd922a9c7e7627953166379dfa600bc0c10d3cea29c08813463c4b09ef59307a42f0f501360f830ff384f80db93fd5b2d3fa9cd33d03d736809278275c55e48c1b34df39ef13c79b487');
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+  width: 180px;
+  height: 260px;
+  margin-right: 10px;
+  flex: 1 0 180px;
+}
+
+.profile-side {
+  flex: 5 0 0;
+}
+.title {
+  font-size: 35px;
+  font-weight: bold;
+}
+
+.keyword-box > span {
+  font-size: small;
+  border: solid 1px mediumspringgreen;
+  word-break: keep-all;
+  line-height: 1.5;
+  padding: 2px 6px;
+  margin: 5px 5px 5px 0;
+  display: inline-block;
+  border-radius: 10px;
+}
+
+.story {
+  margin: 20px 100px;
+}
+
+.review-detail{
+  margin: 20px 20px;
+}
+
+.review {
+  width: 955px;
+  border: solid 2px mediumspringgreen;
+  padding: 20px;
+  margin-bottom: 10px;
+}
+
+
+.star-ratings {
+  color: #aaa9a9;
+  position: relative;
+  unicode-bidi: bidi-override;
+  width: max-content;
+  -webkit-text-fill-color: transparent; /* Will override color (regardless of order) */
+  -webkit-text-stroke-width: 1.3px;
+  -webkit-text-stroke-color: #2b2a29;
+}
+
+.star-ratings-fill {
+  color: #fff58c;
+  padding: 0;
+  position: absolute;
+  z-index: 1;
+  display: flex;
+  top: 0;
+  left: 0;
+  overflow: hidden;
+  -webkit-text-fill-color: gold;
+}
+
+.star-ratings-base {
+  z-index: 0;
+  padding: 0;
+}
