@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    마이페이지
+{% endblock %}
+
+{% block content %}
+<section>
+    본문
+    <div class="profile">
+        프로필
+        <div class="logout">로그아웃</div>
+        <div class="count">선작 카운트</div>
+        <div class="count">리뷰 카운트</div>
+        <div class="favorites_genre">장르 태그?</div>
+    </div>
+    <div class="likes">
+        <div class="title">선호작 5개</div>
+        <div class="load">전체보기</div>
+        <hr>
+        <div class="book">
+            <a href="#">
+                <img src="..." alt="표지">
+                제목 (작가)
+            </a>
+        </div>
+    </div>
+    <div class="reviews">
+        <div class="title">리뷰 3개</div>
+        <div class="load">전체보기</div>
+        <hr>
+        <div class="review">
+            <a href="#">
+                <img src="..." alt="표지">
+                제목
+                장르 | 작가 | 출판사
+            </a>
+            <div class="star">★★★★★</div>
+            <span class="review_date">yy. mm. dd</span>
+            <div class="comment">리뷰 본문</div>
+        </div>
+    </div>
+</section>
+
+{% endblock %}

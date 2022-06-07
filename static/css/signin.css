@@ -1,0 +1,25 @@
+body {
+    background-color: #f3fdf6
+}
+
+.wrap {
+    width: 500px;
+    padding: 30px;
+    margin: auto;
+}
+
+.logo {
+    width: 80%;
+    padding: 50px 0 20px 0;
+    margin: auto;
+}
+
+.logo > img {
+    padding-bottom: 20px;
+}
+
+.formbox {
+    padding: 30px;
+    border-radius: 10px;
+    border: 2px solid #aff4c6;
+}
