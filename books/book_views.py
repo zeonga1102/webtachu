@@ -1,4 +1,3 @@
-from django.http import HttpResponse
 from django.shortcuts import render
 from konlpy.tag import Mecab
 from collections import Counter
@@ -90,7 +89,6 @@ def detail_view(request, id):
     review_info = {'reviews': reviews, 'count': reviews.count()}
 
     return render(request, 'detail.html', {'book_info': book_info, 'review_info': review_info})
-    # return HttpResponse(f'키워드{keyword} 책정보 {book_info.title}')
 
 
 def make_review_keyword(reviews):
