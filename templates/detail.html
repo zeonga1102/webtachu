@@ -35,7 +35,15 @@
                         <span>{{ word }}</span>
                     {% endfor %}
                 </div>
-                <button class="btn-01 favorite"><span style="color:red;">❤️</span> 선호작</button>
+                {% if not is_favorite %}
+                    <a href="{% url 'book_favorite' book_info.book.id %}">
+                        <button class="btn-01 favorite"><span style="color:red;">❤️</span> 선호작</button>
+                    </a>
+                {% else %}
+                    <a href="{% url 'book_favorite' book_info.book.id %}">
+                        <button class="btn-01 favorite is-favorite"><span style="color:red;">❤️</span> 선호작</button>
+                    </a>
+                {% endif %}
             </div>
         </div>
     </div>

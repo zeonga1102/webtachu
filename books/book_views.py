@@ -1,4 +1,5 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
+from django.contrib.auth.decorators import login_required
 from konlpy.tag import Mecab
 from collections import Counter
 from .models import BookModel
@@ -80,15 +81,21 @@ def detail_view(request, id):
     reviews = ReviewModel.objects.filter(book=book)
 
     star_width = book.star * 20 - 2.3
+    if star_width < 0:
+        star_width = 0
+        
     keyword = make_review_keyword(reviews)
     book_info = {'book': book, 'star': star_width, 'keyword': keyword}
 
     for review in reviews:
         review.star = review.star * 20
 
+    user = request.user
+    is_favorite = user.favorite.filter(id=id)
+
     review_info = {'reviews': reviews, 'count': reviews.count()}
 
-    return render(request, 'detail.html', {'book_info': book_info, 'review_info': review_info})
+    return render(request, 'detail.html', {'book_info': book_info, 'review_info': review_info, 'is_favorite': is_favorite})
 
 
 def make_review_keyword(reviews):
@@ -112,3 +119,17 @@ def make_review_keyword(reviews):
         keywords.append(word[0])
 
     return keywords
+
+
+@login_required
+def book_favorite(request, id):
+    user = request.user
+    is_favorite = user.favorite.filter(id=id)
+    book = BookModel.objects.get(id=id)
+
+    if is_favorite:
+        user.favorite.remove(book)
+    else:
+        user.favorite.add(book)
+    return redirect('book_info', id)
+
