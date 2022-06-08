@@ -85,20 +85,18 @@ p {
 
 .book-box {
     display: flex;
+    justify-content: space-around;
 }
 
 .book {
     margin: 0 5px;
-    width: 175px;
-    display: block;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    word-wrap: break-word;
 }
 
 .book-title {
-
+    width: 172px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
 }
 
 .book img {
