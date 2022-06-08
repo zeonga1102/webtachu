@@ -30,26 +30,26 @@
 <header></header>
 <div class="wrap">
     <div class="profile">
-        <div class="cover" style="background-image: url({{ book_info.cover }})"></div>
+        <div class="cover" style="background-image: url({{ book_info.book.cover }})"></div>
         <div class="profile-side">
-            <div class="title mb10">{{ book_info.title }}</div>
+            <div class="title mb10">{{ book_info.book.title }}</div>
             <div class="star-wrap mb10">
                 <div class="star-ratings">
-                    <div class="star-ratings-fill space-x"
-                         :style="{ width: ratingToPercent + '%' }">
+                    <div class="star-ratings-fill space-x" style="width: {{ book_info.star }}%">
                         <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
                     </div>
                     <div class="star-ratings-base space-x">
                         <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
                     </div>
                 </div>
+                <b>{{ book_info.book.star }}</b>
             </div>
             <div>
                 <div class="book-details mb10">
-                    <b>{{ book_info.genre }}</b> | <b>글</b> {{ book_info.author }} | <b>출판사</b> {{ book_info.publisher }}
+                    <b>{{ book_info.book.genre }}</b> | <b>글</b> {{ book_info.book.author }} | <b>출판사</b> {{ book_info.book.publisher }}
                 </div>
                 <div class="keyword-box">
-                    {% for word in keyword %}
+                    {% for word in book_info.keyword %}
                         <span>{{ word }}</span>
                     {% endfor %}
                 </div>
@@ -59,7 +59,7 @@
     </div>
     <div class="story">
         <b>작품소개</b>
-        <p>{{ book_info.story|linebreaks }}</p>
+        <p>{{ book_info.book.story|linebreaks }}</p>
     </div>
     <hr style="border: solid 1px mediumspringgreen; opacity: 100; width:1000px;  margin:auto;">
     <div class="review-detail">
@@ -73,8 +73,7 @@
         {% for review in review_info.reviews %}
             <div class="review mb10">
             <div class="star-ratings">
-                <div class="star-ratings-fill space-x"
-                     :style="{ width: ratingToPercent + '%' }">
+                <div class="star-ratings-fill space-x" style="width: {{ review.star }}%">
                     <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
                 </div>
                 <div class="star-ratings-base space-x">

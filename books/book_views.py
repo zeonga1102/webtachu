@@ -77,14 +77,19 @@ stopwords = ['접기', '더보기', '아', '휴', '아이구', '아이쿠', '아
 
 
 def detail_view(request, id):
-    book_info = BookModel.objects.get(id=id)
-    reviews = ReviewModel.objects.filter(book=book_info)
+    book = BookModel.objects.get(id=id)
+    reviews = ReviewModel.objects.filter(book=book)
 
+    star_width = book.star * 20 - 2.3
     keyword = make_review_keyword(reviews)
+    book_info = {'book': book, 'star': star_width, 'keyword': keyword}
+
+    for review in reviews:
+        review.star = review.star * 20
 
     review_info = {'reviews': reviews, 'count': reviews.count()}
 
-    return render(request, 'detail.html', {'book_info': book_info, 'review_info': review_info, 'keyword': keyword})
+    return render(request, 'detail.html', {'book_info': book_info, 'review_info': review_info})
     # return HttpResponse(f'키워드{keyword} 책정보 {book_info.title}')
 
 

@@ -98,6 +98,10 @@
   margin-bottom: 15px;
 }
 
+.star-wrap {
+  display: flex;
+}
+
 .star-ratings {
   color: #aaa9a9;
   position: relative;
