@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+
+{#{% block head %}#}
+{#    <link rel="stylesheet" href="{% static 'css/genre.css' %}">#}
+{#{% endblock %}#}
+
+{% block title %}
+    장르 페이지
+{% endblock %}
+
+{% block content %}
+
+
+    <div class="main_box main_border">
+        <div class="title_text">
+            &nbsp&nbsp현판
+        </div>
+        <div class="count_box">
+            총 {{ books | length }}개의 작품
+        </div>
+        {% for book in books %}
+            <div class="content_box display_flex" style="margin: auto">
+                <div class="cover_image"><img src="{{ book.cover }}"></div>
+                <div>
+                    <div class="title_font" style="margin-bottom: 10px">
+                        {{ book.title }}
+                    </div>
+                    <div class="display_flex">
+                        <div class="star-ratings">
+                            <div
+                                    class="star-ratings-fill space-x-2 text-lg"
+                                    :style="{ width: ratingToPercent + '%' }"
+                            >
+                                <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+                            </div>
+                            <div class="star-ratings-base space-x-2 text-lg">
+                                <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+                            </div>
+                        </div>
+                        <div style="margin-bottom: 10px">&nbsp| {{ book.author }} | {{ book.publisher }}</div>
+                    </div>
+                    <div>
+                        {{ book.story }}
+                    </div>
+                </div>
+            </div>
+            <hr>
+        {% endfor %}
+
+    </div>
+{% endblock %}

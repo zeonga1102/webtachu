@@ -10,6 +10,11 @@
     <title>웹타추</title>
     <link href="{% static 'css/base.css' %}" rel="stylesheet">
     <link href="{% static 'css/mypage.css' %}" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'css/genre.css' %}">
+
+    {% block head %}
+
+    {% endblock %}
 
 </head>
 <body>
@@ -27,22 +32,22 @@
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav me-auto mb-3 mb-md-0">
                 <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="#">전체</a>
+                    <a class="nav-link active" aria-current="page" href="/genre/로맨스">전체</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">로맨스</a>
+                    <a class="nav-link" href="/genre/로맨스">로맨스</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">판타지</a>
+                    <a class="nav-link" href="/genre/판타지">판타지</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">로맨스판타지</a>
+                    <a class="nav-link" href="/genre/로판">로맨스판타지</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">현대판타지</a>
+                    <a class="nav-link" href="/genre/현판">현대판타지</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">무협</a>
+                    <a class="nav-link" href="/genre/무협">무협</a>
                 </li>
 
             </ul>
