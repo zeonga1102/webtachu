@@ -39,7 +39,7 @@
                     </div>
                     <div>
                         {#                       |truncatechars:200 글자수 제한 코드 #}
-                        {{ page.story |truncatechars:200 }}
+                        {{ page.story |truncatechars:120 }}
                     </div>
                 </div>
             </div>
@@ -47,18 +47,18 @@
         {% endfor %}
 
 
-        {% if pages.has_previous %}
-            <a href="{{ pages.start_index }}">맨 앞으로</a>
-{#            <a href="{{ pages.previous_page_number }}">이전으로</a>#}
-        {% endif %}
 
-        <span>{{ post.number }}</span>
-        <span>/</span>
-        <span>{{ pages.paginator.num_pages }}</span>
-        {% if pages.has_next %}
-{#            <a href="?page={{ pages.next_page_number }}">맨 앞으로</a>#}
-            <a href="{{ pages.paginator.num_pages }}">이전으로</a>
-        {% endif %}
+        <div style="text-align: center">
+            {% if pages.has_previous %}
+                <a href='?page={{ pages.number|add:-1 }}'>Previous</a>
+            {% endif %}
+
+            Page {{ pages.number }} of {{ pages.paginator.num_pages }}
+
+            {% if pages.has_next %}
+                <a href='?page={{ pages.number|add:+1 }}'>Next</a>
+            {% endif %}
+        </div>
 
 
     </div>
@@ -67,12 +67,3 @@
 
 
 
-{#	{% if pages.has_previous %}#}
-{#		<a href='?page={{pages.number|add:-1}}'>Previous</a>#}
-{#	{% endif %}#}
-{##}
-{#	Page {{ pages.number }} of {{ pages.paginator.num_pages }}#}
-{##}
-{#	{% if pages.has_next %}#}
-{#		<a href='?page={{pages.number|add:+1}}'>Next</a>#}
-{#	{% endif %}#}
