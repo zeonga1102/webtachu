@@ -81,6 +81,9 @@ def detail_view(request, id):
     reviews = ReviewModel.objects.filter(book=book)
 
     star_width = book.star * 20 - 2.3
+    if star_width < 0:
+        star_width = 0
+        
     keyword = make_review_keyword(reviews)
     book_info = {'book': book, 'star': star_width, 'keyword': keyword}
 
