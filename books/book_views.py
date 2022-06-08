@@ -1,6 +1,6 @@
 from django.http import HttpResponse
 from django.shortcuts import render
-from konlpy.tag import Mecab
+# from konlpy.tag import Mecab
 from collections import Counter
 from .models import BookModel
 from users.models import ReviewModel
@@ -88,32 +88,31 @@ def detail_view(request, id):
     star_avg = round(star_sum / len(reviews), 1)
     # book_info['star'] = star_avg
 
-    keyword = make_review_keyword(reviews)
+    # keyword = make_review_keyword(reviews)
     # book_info['keyword'] = keyword
 
     # return render(request, 'detail.html', {'book_info': book_info, 'reviews': reviews})
-    return HttpResponse(f'키워드{keyword}')
+    # return HttpResponse(f'키워드{keyword}')
 
 
-def make_review_keyword(reviews):
-    global stopwords
-
-    mecab = Mecab(dicpath='C:/mecab/mecab-ko-dic')
-
-    review_tokens = []
-
-    for review in reviews.values():
-        tmp = mecab.nouns(review['desc'])
-        tokens = []
-        for token in tmp:
-            if not token in stopwords:
-                tokens.append(token)
-        review_tokens += tokens
-
-    count = Counter(review_tokens)
-    keywords = []
-    for word in count.most_common(5):
-        keywords.append(word)
-
-    return keywords
-
+# def make_review_keyword(reviews):
+#     global stopwords
+#
+#     mecab = Mecab(dicpath='C:/mecab/mecab-ko-dic')
+#
+#     review_tokens = []
+#
+#     for review in reviews.values():
+#         tmp = mecab.nouns(review['desc'])
+#         tokens = []
+#         for token in tmp:
+#             if not token in stopwords:
+#                 tokens.append(token)
+#         review_tokens += tokens
+#
+#     count = Counter(review_tokens)
+#     keywords = []
+#     for word in count.most_common(5):
+#         keywords.append(word)
+#
+#     return keywords
