@@ -3,6 +3,7 @@ from django.contrib.auth.decorators import login_required
 from books.models import BookModel
 from django.core.paginator import Paginator
 from users.models import ReviewModel
+from django.db.models import Count, Avg
 
 
 
@@ -18,26 +19,26 @@ def main_view(request):
     return render(request, 'main_genre/main.html')
 
 
-def detail_view(request, id):
-    book_info = BookModel.objects.get(id=id)
-    reviews = ReviewModel.objects.filter(book=book_info)
-    return render(request, 'detail.html', {'book_info': book_info, 'reviews': reviews})
+@login_required
+def create_review(request, book_id):
+    if request.method == 'POST':
+        user = request.user
+        current_book = BookModel.objects.get(id=book_id)
+        star = int(request.POST.get('rating', 0))
+        review = request.POST.get('review', '')
+
+        ReviewModel.objects.create(user=user, book=current_book, star=star, desc=review)
+        return redirect('book_info', book_id)
 
 
 @login_required
-def create_review_view(request, id):
-    if request.method == 'POST':
-        user = request.user
-        book_info = BookModel.objects.get(id=id)
-        star = request.POST.get('review', None)
-        review = request.POST.get('review', None)
-
-        ReviewModel.objects.create(user=user, book=book_info, star=star, desc=review)
-        return redirect('book_info', id)
+def delete_review(request, book_id, review_id):
+    review = ReviewModel.objects.get(id=review_id)
+    review.delete()
+    return redirect('book_info', book_id)
 
 
 # @login_required
-# def delete_review_view(request, id):
-#
-#
-# @login_required
+# def modify_review(request, book_id, review_id):
+#     if request.method == "POST":
+#         review = ReviewModel.objects.get(id=review_id)
