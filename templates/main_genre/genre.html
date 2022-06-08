@@ -1,0 +1,78 @@
+{% extends 'base.html' %}
+
+
+
+{% block title %}
+    장르 페이지
+{% endblock %}
+
+{% block content %}
+
+
+    <div class="main_box main_border">
+        <div class="title_text">
+            &nbsp&nbsp현판
+        </div>
+        <div class="count_box">
+            총 {{ pages | length }}개의 작품
+        </div>
+        {% for page in pages %}
+            <div class="content_box display_flex" style="margin: auto">
+                <div class="cover_image"><img src="{{ page.cover }}"></div>
+                <div>
+                    <div class="title_font" style="margin-bottom: 10px">
+                        {{ page.title }}
+                    </div>
+                    <div class="display_flex">
+                        <div class="star-ratings">
+                            <div
+                                    class="star-ratings-fill space-x-2 text-lg"
+                                    :style="{ width: ratingToPercent + '%' }"
+                            >
+                                <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+                            </div>
+                            <div class="star-ratings-base space-x-2 text-lg">
+                                <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+                            </div>
+                        </div>
+                        <div style="margin-bottom: 10px">&nbsp| {{ page.author }} | {{ page.publisher }}</div>
+                    </div>
+                    <div>
+                        {#                       |truncatechars:200 글자수 제한 코드 #}
+                        {{ page.story |truncatechars:200 }}
+                    </div>
+                </div>
+            </div>
+            <hr>
+        {% endfor %}
+
+
+        {% if pages.has_previous %}
+            <a href="{{ pages.start_index }}">맨 앞으로</a>
+{#            <a href="{{ pages.previous_page_number }}">이전으로</a>#}
+        {% endif %}
+
+        <span>{{ post.number }}</span>
+        <span>/</span>
+        <span>{{ pages.paginator.num_pages }}</span>
+        {% if pages.has_next %}
+{#            <a href="?page={{ pages.next_page_number }}">맨 앞으로</a>#}
+            <a href="{{ pages.paginator.num_pages }}">이전으로</a>
+        {% endif %}
+
+
+    </div>
+{% endblock %}
+
+
+
+
+{#	{% if pages.has_previous %}#}
+{#		<a href='?page={{pages.number|add:-1}}'>Previous</a>#}
+{#	{% endif %}#}
+{##}
+{#	Page {{ pages.number }} of {{ pages.paginator.num_pages }}#}
+{##}
+{#	{% if pages.has_next %}#}
+{#		<a href='?page={{pages.number|add:+1}}'>Next</a>#}
+{#	{% endif %}#}
