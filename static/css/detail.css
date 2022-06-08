@@ -38,7 +38,6 @@
 }
 
 .cover {
-  background-image: url('https://w.namu.la/s/aed28a712aa9f45718163ffe7896d3670ca32ff30ecdfb137bf8740b95815b5d6aad6ebb31133dd922a9c7e7627953166379dfa600bc0c10d3cea29c08813463c4b09ef59307a42f0f501360f830ff384f80db93fd5b2d3fa9cd33d03d736809278275c55e48c1b34df39ef13c79b487');
   background-repeat: no-repeat;
   background-size: contain;
   background-position: center;
@@ -97,6 +96,10 @@
   border: solid 2px mediumspringgreen;
   padding: 20px;
   margin-bottom: 15px;
+}
+
+.star-wrap {
+  display: flex;
 }
 
 .star-ratings {

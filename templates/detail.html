@@ -29,27 +29,28 @@
 <header></header>
 <div class="wrap">
     <div class="profile">
-        <div class="cover"></div>
+        <div class="cover" style="background-image: url({{ book_info.book.cover }})"></div>
         <div class="profile-side">
-            <div class="title mb10">데뷔 못 하면 죽는 병 걸림</div>
+            <div class="title mb10">{{ book_info.book.title }}</div>
             <div class="star-wrap mb10">
                 <div class="star-ratings">
-                    <div class="star-ratings-fill space-x"
-                         :style="{ width: ratingToPercent + '%' }">
+                    <div class="star-ratings-fill space-x" style="width: {{ book_info.star }}%">
                         <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
                     </div>
                     <div class="star-ratings-base space-x">
                         <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
                     </div>
                 </div>
+                <b>{{ book_info.book.star }}</b>
             </div>
             <div>
                 <div class="book-details mb10">
-                    <b>현대판타지</b> | <b>글</b> 백덕수 | <b>출판사</b> kwbooks
+                    <b>{{ book_info.book.genre }}</b> | <b>글</b> {{ book_info.book.author }} | <b>출판사</b> {{ book_info.book.publisher }}
                 </div>
                 <div class="keyword-box">
-                    <span>핵인싸인</span> <span>스타일리시한</span> <span>오열하는</span> <span>울컥하는</span>
-                    <span>감동의쓰나미인</span>
+                    {% for word in book_info.keyword %}
+                        <span>{{ word }}</span>
+                    {% endfor %}
                 </div>
                 <button class="btn-01 favorite"><span style="color:red;">❤️</span> 선호작</button>
             </div>
@@ -57,34 +58,21 @@
     </div>
     <div class="story">
         <b>작품소개</b>
-        <p>4년차 공시생,
-            <br>낯선 몸에 빙의해 3년 전으로 돌아왔다.
-            <br>
-            <br>그리고 그의 눈앞에 나타난 갑작스러운 상태창의 협박!
-            <br>
-            <br>[돌발!]
-            <br>[상태이상 : '데뷔가 아니면 죽음을' 발생!]
-            <br>
-            <br>돌연사 위협 때문에 팔자에도 없던 아이돌에 도전하게 된 주인공의 대환장 일지.
-            <br>※ 특이사항 : 빙의 전 아이돌 데이터 찍어다 팔았었음.
-        </p>
+        <p>{{ book_info.book.story|linebreaks }}</p>
     </div>
     <hr style="border: solid 1px mediumspringgreen; opacity: 100; width:1000px;  margin:auto;">
-
-    {% if user.is_authenticated %}}
-        <div class="review-detail">
-            <b>이 책의 리뷰 (5개)</b>
-            <button id="floating_modal_button" class="btn-01 floating-btn" data-bs-toggle="modal"
-                    data-bs-target="#writing_modal">
-                <img src="images/writing.png" align="center" width="20px" height="20px"/> 리뷰 작성
-            </button>
-        </div>
-        <div class="reviews">
-        {% for reivew in reviews %}
+    <div class="review-detail">
+        <b>이 책의 리뷰 ({{ review_info.count }}개)</b>
+        <button id="floating_modal_button" class="btn-01 floating-btn" data-bs-toggle="modal"
+                data-bs-target="#writing_modal">
+            <img src="images/writing.png" align="center" width="20px" height="20px"/> 리뷰 작성
+        </button>
+    </div>
+    <div class="reviews">
+        {% for review in review_info.reviews %}
             <div class="review mb10">
                 <div class="star-ratings">
-                    <div class="star-ratings-fill space-x"
-                         :style="{ width: ratingToPercent + '%' }">
+                    <div class="star-ratings-fill space-x" style="width: {{ review.star }}%">
                         <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
                     </div>
                     <div class="star-ratings-base space-x">
@@ -93,17 +81,15 @@
                 </div>
                 <div>
                     <div class="reviewer">
-                        <b>{{ reivew.user }}</b><span>| {{ reivew.date }}</span>
+                        <b>{{ review.user.username }}</b><span>| {{ review.date }}</span>
                     </div>
                     <div>
-                        {{ reivew.desc }}
+                        {{ review.desc|linebreaks }}
                     </div>
                 </div>
             </div>
         {% endfor %}
-        </div>
-    {% endif %}
-
+    </div>
 </div>
 
 <!-- # writing_modal -->
