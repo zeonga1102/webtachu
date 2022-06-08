@@ -28,43 +28,79 @@
     </section>
     <section>
         <div class="likes">
-            <div class="title">
-                선호작 5개<span class="load">전체보기</span>
+            <div class="mypage-title">
+                선호작 5개<span class="load"><a href="#">전체보기</a></span>
             </div>
-            <hr>
+            <hr class="profile-hr">
             <div class="book-box">
                 <div class="book">
                     <a href="#">
-                        <img src="..." alt="표지">
-                        제목 (작가)
+                        <img src="https://comicthumb-phinf.pstatic.net/20210730_276/pocket_1627613694939781YL_JPEG/_%284%29.jpg?type=m260"
+                             alt="표지"><br>
+                        <p><b>화산귀환</b><br>비가<br></p>
+                        <span class="genre-tag">무협</span>
                     </a>
                 </div>
                 <div class="book">
-                    <a href="">
-                        <img src="..." alt="표지">
-                        제목 (작가)
+                    <a href="#">
+                        <img src="https://comicthumb-phinf.pstatic.net/20201201_144/pocket_16068068519219lFpM_JPEG/314752_1.jpg?type=m260"
+                             alt="표지"><br>
+                        <p><b>전지적 독자 시점</b><br>싱숑<br></p>
+                        <span class="genre-tag">현판</span>
                     </a>
                 </div>
+                <div class="book">
+                    <a href="#">
+                        <img src="https://comicthumb-phinf.pstatic.net/20220524_192/pocket_1653377912337bhB5l_JPEG/220516_%BF%CF%C0%FC%C3%B5%C0%E7_lie%2C-liar.jpg?type=m260"
+                             alt="표지"><br>
+                        <p><b>라이, 라이어 (lie, liar)</b><br>완전천재<br></p>
+                        <span class="genre-tag">로맨스</span>
+                    </a>
+                </div>
+                <div class="book">
+                    <a href="#">
+                        <img src="https://comicthumb-phinf.pstatic.net/20211222_263/pocket_1640144436504p7IMk_JPEG/00.jpg?type=m260"
+                             alt="표지"><br>
+                        <p><b>흑막님, 아이만 키울테니 이혼해주세요</b><br>성화영<br></p>
+                        <span class="genre-tag">로판</span>
+                    </a>
+                </div>
+                <div class="book">
+                    <a href="#">
+                        <img src="https://comicthumb-phinf.pstatic.net/20211027_249/pocket_1635313459604YrTkv_JPEG/%BE%C6%C4%AB%B5%A5%B9%CC%BF%A1-%C0%A7%C0%E5%C3%EB%BE%F7%B4%E7%C7%DF%B4%D9.jpg?type=m260"
+                             alt="표지"><br>
+                        <p><b>아카데미에 위장취업당했다</b><br>sayren<br></p>
+                        <span class="genre-tag">판타지</span>
+                    </a>
+                </div>
+
+
             </div>
         </div>
     </section>
     <section>
         <div class="reviews">
-            <div class="title">리뷰 3개<span class="load">전체보기</span></div>
-            <hr>
-            {% for review in reviews %}
-                {{ review }}
-                <div class="review">
+            <div class="mypage-title">리뷰 3개<span class="load"><a href="#">전체보기</a></span></div>
+            <hr class="profile-hr">
+            {#            {% for review in reviews %}#}
+            {{ review }}
+            <div class="review">
+
+                <div class="review-cover-img">
                     <a href="#">
-                        <img src="..." alt="표지">
-                        제목
-                        장르 | 작가 | 출판사
+                        <img src="https://comicthumb-phinf.pstatic.net/20211027_249/pocket_1635313459604YrTkv_JPEG/%BE%C6%C4%AB%B5%A5%B9%CC%BF%A1-%C0%A7%C0%E5%C3%EB%BE%F7%B4%E7%C7%DF%B4%D9.jpg?type=m260"
+                             alt="표지">
                     </a>
-                    <div class="star">{{ review.star }}점</div>
-                    <span class="review_date">{{ review.date }}</span>
-                    <div class="comment">{{ review.desc }}</div>
                 </div>
-            {% endfor %}
+                <div class="review-detail-mypage">
+                    <h4><a href="#">아카데미에 위장취업당했다</a></h4>
+                    <p><span class="genre-tag">판타지</span> | <b>글</b> sayren | <b>출판사</b> JC미디어</p>
+                    <p><span class="star">★★★★☆</span></p>
+                    <p><span class="review_date">작성일: yyyy.mm.dd</span></p>
+                    <p><span class="comment">리뷰</span></p>
+                </div>
+            </div>
+            {#            {% endfor %}#}
         </div>
     </section>
 
