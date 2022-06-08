@@ -1,4 +1,5 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
+from django.contrib.auth.decorators import login_required
 from konlpy.tag import Mecab
 from collections import Counter
 from .models import BookModel
@@ -115,3 +116,17 @@ def make_review_keyword(reviews):
         keywords.append(word[0])
 
     return keywords
+
+
+@login_required
+def book_favorite(request, id):
+    user = request.user
+    is_favorite = user.favorite.filter(id=id)
+    book = BookModel.objects.get(id=id)
+
+    if is_favorite:
+        user.favorite.remove(book)
+    else:
+        user.favorite.add(book)
+    return redirect('book_info', id)
+

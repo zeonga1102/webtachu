@@ -8,4 +8,5 @@ urlpatterns = [
     path('genre/<str:name>', views.genre_view, name='books'),
     path('home', views.genre_view, name='books'),
     path('<int:id>/', book_views.detail_view, name='book_info'),
+    path('favorite/<int:id>', book_views.book_favorite, name='book_favorite')
 ]

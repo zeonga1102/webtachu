@@ -36,9 +36,13 @@
                     {% endfor %}
                 </div>
                 {% if not is_favorite %}
-                    <button class="btn-01 favorite"><span style="color:red;">❤️</span> 선호작</button>
+                    <a href="{% url 'book_favorite' book_info.book.id %}">
+                        <button class="btn-01 favorite"><span style="color:red;">❤️</span> 선호작</button>
+                    </a>
                 {% else %}
-                    <button class="btn-01 favorite is-favorite"><span style="color:red;">❤️</span> 선호작</button>
+                    <a href="{% url 'book_favorite' book_info.book.id %}">
+                        <button class="btn-01 favorite is-favorite"><span style="color:red;">❤️</span> 선호작</button>
+                    </a>
                 {% endif %}
             </div>
         </div>
