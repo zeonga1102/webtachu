@@ -87,7 +87,7 @@ def detail_view(request, id):
         review.star = review.star * 20
 
     user = request.user
-    is_favorite = user.favorite.filter(id=id).values()
+    is_favorite = user.favorite.filter(id=id)
 
     review_info = {'reviews': reviews, 'count': reviews.count()}
 
