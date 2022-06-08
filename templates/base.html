@@ -10,6 +10,8 @@
     <title>웹타추</title>
     <link href="{% static 'css/base.css' %}" rel="stylesheet">
     <link href="{% static 'css/genre.css' %}" rel="stylesheet">
+    <link href="{% static 'css/main.css' %}" rel="stylesheet">
+
 
 </head>
 <body>
@@ -27,29 +29,24 @@
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav me-auto mb-3 mb-md-0">
                 <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="#">전체</a>
+                    <a class="nav-link active" aria-current="page" href="{% url 'main' %}">메인</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">로맨스</a>
+                    <a class="nav-link" href="{% url 'genre' '로맨스' %}">로맨스</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">판타지</a>
+                    <a class="nav-link" href="{% url 'genre' '판타지' %}">판타지</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">로맨스판타지</a>
+                    <a class="nav-link" href="{% url 'genre' '로판' %}">로맨스판타지</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">현대판타지</a>
+                    <a class="nav-link" href="{% url 'genre' '현판' %}">현대판타지</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">무협</a>
+                    <a class="nav-link" href="{% url 'genre' '무협' %}">무협</a>
                 </li>
 
-            </ul>
-            <ul class="navbar-nav me-3 mb-3 mb-md-0">
-                <li class="nav-item">
-                    <a class="nav-link" href="{% url 'mypage' %}">선호작</a>
-                </li>
             </ul>
             <div class="userinfo mb-2 mb-md-0">
                 <a href="{% url 'mypage' %}"><b>{{ user.first_name }}</b></a>님
@@ -59,10 +56,6 @@
     </div>
 </nav>
 {% block content %}
-
 {% endblock %}
-
-
-
 </body>
 </html>
