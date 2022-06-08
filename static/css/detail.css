@@ -29,7 +29,7 @@
   margin: auto;
 }
 
-.profile
+.book-profile
 {
   width: 1000px;
   margin-top: 50px;
@@ -75,7 +75,7 @@
   margin: 20px 100px;
 }
 
-.reviews {
+.book-reviews {
   display: block;
   margin: auto;
 }
@@ -91,7 +91,7 @@
   font-size: large;
 }
 
-.review {
+.book-review {
   width: 1000px;
   border: solid 2px mediumspringgreen;
   padding: 20px;
