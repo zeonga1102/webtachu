@@ -86,9 +86,12 @@ def detail_view(request, id):
     for review in reviews:
         review.star = review.star * 20
 
+    user = request.user
+    is_favorite = user.favorite.filter(id=id).values()
+
     review_info = {'reviews': reviews, 'count': reviews.count()}
 
-    return render(request, 'detail.html', {'book_info': book_info, 'review_info': review_info})
+    return render(request, 'detail.html', {'book_info': book_info, 'review_info': review_info, 'is_favorite': is_favorite})
 
 
 def make_review_keyword(reviews):
