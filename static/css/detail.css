@@ -7,6 +7,20 @@
   margin-bottom: 10px;
 }
 
+.btn-01 {
+  background-color: transparent;
+  font-size: small;
+  font-weight: bold;
+  width: auto;
+  height: auto;
+  border: solid 1px mediumspringgreen;
+  border-radius: 10px;
+  line-height: 1.5;
+  word-break: keep-all;
+  display: inline-block;
+  padding: 2px 10px;
+}
+
 .wrap {
   width: 1000px;
   height: auto;
@@ -37,6 +51,7 @@
 .profile-side {
   flex: 5 0 0;
 }
+
 .title {
   font-size: 35px;
   font-weight: bold;
@@ -53,21 +68,36 @@
   border-radius: 10px;
 }
 
+.favorite {
+  margin: 20px 0 10px 0;
+}
+
 .story {
   margin: 20px 100px;
 }
 
+.reviews {
+  display: block;
+  margin: auto;
+}
+
 .review-detail{
-  margin: 20px 20px;
+  margin: 40px 20px  20px 20px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+.review-detail > b {
+  font-size: large;
 }
 
 .review {
-  width: 955px;
+  width: 1000px;
   border: solid 2px mediumspringgreen;
   padding: 20px;
-  margin-bottom: 10px;
+  margin-bottom: 15px;
 }
-
 
 .star-ratings {
   color: #aaa9a9;
@@ -94,4 +124,86 @@
 .star-ratings-base {
   z-index: 0;
   padding: 0;
+}
+
+.star-rating-wrap {
+  display: flex;
+  align-items: center;
+}
+
+.star-rating {
+  display: flex;
+  flex-direction: row-reverse;
+  font-size: 2.25rem;
+  line-height: 2.5rem;
+  justify-content: space-around;
+  padding: 0 0.2em;
+  text-align: center;
+  width: 5em;
+}
+
+.star-rating input {
+  display: none;
+}
+
+.star-rating label {
+  -webkit-text-fill-color: transparent; /* Will override color (regardless of order) */
+  -webkit-text-stroke-width: 2.3px;
+  -webkit-text-stroke-color: #2b2a29;
+  cursor: pointer;
+}
+
+.star-rating :checked ~ label {
+  -webkit-text-fill-color: gold;
+}
+
+.star-rating label:hover,
+.star-rating label:hover ~ label {
+  -webkit-text-fill-color: #fff58c;
+}
+
+.modal-header > button {
+  font-size: large;
+  font-weight: bold;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
+
+.modal-title {
+  display: block;
+  margin: 30px auto auto auto;
+}
+
+.star-rating-wrap {
+  display: grid;
+  place-items: center;
+  margin: 10px 0 20px 0;
+}
+
+.modal-writing-box:focus {
+  outline: none;
+}
+
+.modal-body {
+  padding: 0 20px;
+}
+
+.modal-writing-box {
+  width: 100%;
+  height: 300px;
+  border: solid 2px mediumspringgreen;
+  padding: 10px;
+  resize: none;
+  overflow: auto;
+}
+
+.review-submit {
+  color: white;
+  font-weight: bold;
+  background-color: mediumspringgreen;
+  opacity: 0.7;
+  border: none;
+  padding: 3px 10px;
+  margin: 0 auto 10px auto;
 }
