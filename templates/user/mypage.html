@@ -5,41 +5,56 @@
 {% endblock %}
 
 {% block content %}
-<section>
-    본문
-    <div class="profile">
-        프로필
-        <div class="logout">로그아웃</div>
-        <div class="count">선작 카운트</div>
-        <div class="count">리뷰 카운트</div>
-        <div class="favorites_genre">장르 태그?</div>
-    </div>
-    <div class="likes">
-        <div class="title">선호작 5개</div>
-        <div class="load">전체보기</div>
-        <hr>
-        <div class="book">
-            <a href="#">
-                <img src="..." alt="표지">
-                제목 (작가)
-            </a>
+    <section>
+        <div class="profile">
+            <div class="logout">
+                <h3>{{ user.first_name }}님</h3>
+                <h6>{{ user.email }}</h6>
+                <button class="btn btn-success me-md-2 mt-4" type="button" onclick="location.href='/logout'">로그아웃
+                </button>
+            </div>
+            <div class="count">
+                <h2><i class="bi bi-heart"></i></h2>
+                선호작<br>
+                000개
+            </div>
+            <div class="count">
+                <h2><i class="bi bi-journal-text"></i></h2>
+                리뷰<br>
+                000개
+            </div>
+            <div class="favorites">장르 태그?</div>
         </div>
-    </div>
-    <div class="reviews">
-        <div class="title">리뷰 3개</div>
-        <div class="load">전체보기</div>
-        <hr>
-        <div class="review">
-            <a href="#">
-                <img src="..." alt="표지">
-                제목
-                장르 | 작가 | 출판사
-            </a>
-            <div class="star">★★★★★</div>
-            <span class="review_date">yy. mm. dd</span>
-            <div class="comment">리뷰 본문</div>
+    </section>
+    <section>
+        <div class="likes">
+            <div class="title">
+                선호작 5개<span class="load">전체보기</span>
+            </div>
+            <hr>
+            <div class="book">
+                <a href="#">
+                    <img src="..." alt="표지">
+                    제목 (작가)
+                </a>
+            </div>
         </div>
-    </div>
-</section>
+    </section>
+    <section>
+        <div class="reviews">
+            <div class="title">리뷰 3개<span class="load">전체보기</span></div>
+            <hr>
+            <div class="review">
+                <a href="#">
+                    <img src="..." alt="표지">
+                    제목
+                    장르 | 작가 | 출판사
+                </a>
+                <div class="star">★★★★★</div>
+                <span class="review_date">yy. mm. dd</span>
+                <div class="comment">리뷰 본문</div>
+            </div>
+        </div>
+    </section>
 
 {% endblock %}

@@ -46,11 +46,6 @@
                 </li>
 
             </ul>
-            <ul class="navbar-nav me-3 mb-3 mb-md-0">
-                <li class="nav-item">
-                    <a class="nav-link" href="{% url 'mypage' %}">선호작</a>
-                </li>
-            </ul>
             <div class="userinfo mb-2 mb-md-0">
                 <a href="{% url 'mypage' %}"><b>{{ user.first_name }}</b></a>님
                 <a href="/logout"><i class="bi bi-x-circle"></i></a>
@@ -59,10 +54,6 @@
     </div>
 </nav>
 {% block content %}
-
 {% endblock %}
-
-
-
 </body>
 </html>

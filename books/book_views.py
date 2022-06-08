@@ -107,4 +107,3 @@ def make_review_keyword(reviews):
         keywords.append(word)
 
     return keywords
-
