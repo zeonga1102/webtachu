@@ -82,8 +82,10 @@ def detail_view(request, id):
 
     keyword = make_review_keyword(reviews)
 
-    # return render(request, 'detail.html', {'book_info': book_info, 'reviews': reviews})
-    return HttpResponse(f'키워드{keyword} 책정보 {book_info.title}')
+    review_info = {'reviews': reviews, 'count': reviews.count()}
+
+    return render(request, 'detail.html', {'book_info': book_info, 'review_info': review_info, 'keyword': keyword})
+    # return HttpResponse(f'키워드{keyword} 책정보 {book_info.title}')
 
 
 def make_review_keyword(reviews):
@@ -104,7 +106,6 @@ def make_review_keyword(reviews):
     count = Counter(review_tokens)
     keywords = []
     for word in count.most_common(5):
-        keywords.append(word)
+        keywords.append(word[0])
 
     return keywords
-
