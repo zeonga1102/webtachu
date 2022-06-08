@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 
 {#{% block head %}#}
-{#    <link rel="stylesheet" href="{% static 'css/genre.css' %}">#}
+{#    <link href="{% static 'css/genre.css' %}" rel="stylesheet">#}
 {#{% endblock %}#}
 
 {% block title %}
@@ -18,12 +18,12 @@
         <div class="count_box">
             총 {{ books | length }}개의 작품
         </div>
-        {% for book in books %}
+        {% for books in books %}
             <div class="content_box display_flex" style="margin: auto">
-                <div class="cover_image"><img src="{{ book.cover }}"></div>
+                <div class="cover_image"><img src="{{ books.cover }}"></div>
                 <div>
                     <div class="title_font" style="margin-bottom: 10px">
-                        {{ book.title }}
+                        {{ books.title }}
                     </div>
                     <div class="display_flex">
                         <div class="star-ratings">
@@ -37,10 +37,10 @@
                                 <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
                             </div>
                         </div>
-                        <div style="margin-bottom: 10px">&nbsp| {{ book.author }} | {{ book.publisher }}</div>
+                        <div style="margin-bottom: 10px">&nbsp| {{ books.author }} | {{ books.publisher }}</div>
                     </div>
                     <div>
-                        {{ book.story }}
+                        {{ books.story }}
                     </div>
                 </div>
             </div>

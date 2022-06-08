@@ -4,4 +4,4 @@ from books.models import BookModel
 
 def genre_view(request, name):
     books = BookModel.objects.filter(genre=name)
-    return render(request, 'genre.html', {'books': books})
+    return render(request, 'main_genre/genre.html', {'books': books})
