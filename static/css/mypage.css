@@ -1,20 +1,45 @@
 body {
     background-color: white;
 }
+
 section {
     width: 1000px;
     margin: auto;
     padding: 20px 20px 10px 20px;
 }
 
-hr {
-    width: 100%;
-    border: 1px solid #aff4c6;
+a {
+    text-decoration: none;
+    color: black;
 }
 
-.title {
+a:hover {
+    text-decoration: none;
+    color: black;
+}
+
+.profile-hr {
+    width: 100%;
+    margin: 10px 0 20px 0;
+    border: 2px solid #aff4c6;
+}
+
+p {
+    margin: 8px 0;
+    /*word-break: break-all;*/
+}
+
+.genre-tag {
+    border-radius: 5px;
+    /*border: 1px solid #aff4c6;*/
+    background-color: #aff4c6;
+    padding: 2px 4px;
+}
+
+.mypage-title {
     font-size: 20px;
 }
+
 .load {
     font-size: 10px;
     margin-left: 20px;
@@ -55,18 +80,42 @@ hr {
     background-color: white;
 }
 
-.likes {}
+.likes {
+}
 
 .book-box {
     display: flex;
+    justify-content: space-around;
 }
+
 .book {
-    background-color: pink;
+    margin: 0 5px;
 }
+
+.book-title {
+    width: 172px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+.book img {
+    height: 260px;
+}
+
 
 .reviews {
 }
 
 .review {
-    background-color: lightblue;
+    display: flex;
+    /*background-color: lightblue;*/
+}
+
+.review-cover-img img {
+    height: 260px;
+}
+
+.review-detail-mypage {
+    padding-left: 20px;
 }

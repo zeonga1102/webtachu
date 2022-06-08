@@ -60,8 +60,14 @@ def home(request):
         return redirect('/sign-in')
 
 
+@login_required
 def mypage(request):
     if request.method == 'GET':
-        user_id = request.user.id
-        reviews = ReviewModel.objects.filter(user_id=user_id)[::-1]
-        return render(request, 'user/mypage.html', {'reviews':reviews})
+        user = request.user
+        favorite = user.favorite.all()
+        print(favorite)
+
+        # books = BookModel.objects.filter(id=user_id)
+        # reviews = ReviewModel.objects.filter(user_id=user_id)
+        reviews = ReviewModel.objects.filter(user_id=user.id)[::-1][:3]
+        return render(request, 'user/mypage.html', {'reviews':reviews, 'favorite':favorite})
