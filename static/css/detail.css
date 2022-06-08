@@ -26,13 +26,13 @@
   height: auto;
   display: grid;
   justify-content: center;
+  padding: 50px 0 50px 0;
   margin: auto;
 }
 
 .book-profile
 {
   width: 1000px;
-  margin-top: 50px;
   display:flex;
   flex-direction: row;
 }
@@ -81,7 +81,7 @@
 }
 
 .review-detail{
-  margin: 40px 20px  20px 20px;
+  margin: 40px 20px 20px 20px;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -94,7 +94,7 @@
 .book-review {
   width: 1000px;
   border: solid 2px mediumspringgreen;
-  padding: 20px;
+  padding: 20px 20px 45px 20px;
   margin-bottom: 15px;
 }
 
