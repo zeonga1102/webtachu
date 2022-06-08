@@ -32,11 +32,19 @@
                 선호작 5개<span class="load">전체보기</span>
             </div>
             <hr>
-            <div class="book">
-                <a href="#">
-                    <img src="..." alt="표지">
-                    제목 (작가)
-                </a>
+            <div class="book-box">
+                <div class="book">
+                    <a href="#">
+                        <img src="..." alt="표지">
+                        제목 (작가)
+                    </a>
+                </div>
+                <div class="book">
+                    <a href="">
+                        <img src="..." alt="표지">
+                        제목 (작가)
+                    </a>
+                </div>
             </div>
         </div>
     </section>
@@ -44,16 +52,19 @@
         <div class="reviews">
             <div class="title">리뷰 3개<span class="load">전체보기</span></div>
             <hr>
-            <div class="review">
-                <a href="#">
-                    <img src="..." alt="표지">
-                    제목
-                    장르 | 작가 | 출판사
-                </a>
-                <div class="star">★★★★★</div>
-                <span class="review_date">yy. mm. dd</span>
-                <div class="comment">리뷰 본문</div>
-            </div>
+            {% for review in reviews %}
+                {{ review }}
+                <div class="review">
+                    <a href="#">
+                        <img src="..." alt="표지">
+                        제목
+                        장르 | 작가 | 출판사
+                    </a>
+                    <div class="star">{{ review.star }}점</div>
+                    <span class="review_date">{{ review.date }}</span>
+                    <div class="comment">{{ review.desc }}</div>
+                </div>
+            {% endfor %}
         </div>
     </section>
 

@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from .models import UserModel
+from .models import UserModel, ReviewModel, BookModel
 from django.contrib.auth import get_user_model
 from django.contrib import auth
 from django.contrib.auth.decorators import login_required
@@ -62,4 +62,6 @@ def home(request):
 
 def mypage(request):
     if request.method == 'GET':
-        return render(request, 'user/mypage.html')
+        user_id = request.user.id
+        reviews = ReviewModel.objects.filter(user_id=user_id)[::-1]
+        return render(request, 'user/mypage.html', {'reviews':reviews})
