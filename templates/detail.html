@@ -1,3 +1,5 @@
+{% load static %}
+
 <!doctype html>
 <html lang="en">
 <head>
@@ -7,15 +9,19 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <!-- JS -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"
-            integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
             crossorigin="anonymous"></script>
     <!-- favicon -->
 
-    <!--자바스크립트, 스타일시트 파일 불러오기-->
-    <link rel="stylesheet" href="/detail.css">
-    <link rel="script" href="/detail.js">
+    <!--스타일시트 파일 불러오기-->
+    <link rel="stylesheet" href="{% static 'css/detail.css' %}">
+{#    <script  type="text/javascript" src="{% static '/js/detail.js' %}"></script>#}
 
     <title>[웹소설] 웹.타.추</title>
 </head>
@@ -24,9 +30,9 @@
 <header></header>
 <div class="wrap">
     <div class="profile">
-        <div class="cover"></div>
+        <div class="cover" style="background-image: url({{ book_info.cover }})"></div>
         <div class="profile-side">
-            <div class="title mb10">데뷔 못 하면 죽는 병 걸림</div>
+            <div class="title mb10">{{ book_info.title }}</div>
             <div class="star-wrap mb10">
                 <div class="star-ratings">
                     <div class="star-ratings-fill space-x"
@@ -40,36 +46,32 @@
             </div>
             <div>
                 <div class="book-details mb10">
-                    <b>현대판타지</b> | <b>글</b> 백덕수 | <b>출판사</b> kwbooks
+                    <b>{{ book_info.genre }}</b> | <b>글</b> {{ book_info.author }} | <b>출판사</b> {{ book_info.publisher }}
                 </div>
                 <div class="keyword-box">
-                    <span>핵인싸인</span> <span>스타일리시한</span> <span>오열하는</span> <span>울컥하는</span>
-                    <span>감동의쓰나미인</span> <span>하드캐리하는</span> <span>레전드찍는</span> <span>레트로한</span>
+                    {% for word in keyword %}
+                        <span>{{ word }}</span>
+                    {% endfor %}
                 </div>
-
+                <button class="btn-01 favorite"><span style="color:red;">❤️</span> 선호작</button>
             </div>
         </div>
     </div>
     <div class="story">
         <b>작품소개</b>
-        <p>4년차 공시생,
-            <br>낯선 몸에 빙의해 3년 전으로 돌아왔다.
-            <br>
-            <br>그리고 그의 눈앞에 나타난 갑작스러운 상태창의 협박!
-            <br>
-            <br>[돌발!]
-            <br>[상태이상 : '데뷔가 아니면 죽음을' 발생!]
-            <br>
-            <br>돌연사 위협 때문에팔자에도 없던 아이돌에 도전하게 된주인공의 대환장 일지.
-            <br>※특이사항 : 빙의 전 아이돌 데이터 찍어다 팔았었음.
-        </p>
+        <p>{{ book_info.story|linebreaks }}</p>
     </div>
-    <hr style="border: solid 1px mediumspringgreen; width:1000px; margin:auto;">
+    <hr style="border: solid 1px mediumspringgreen; opacity: 100; width:1000px;  margin:auto;">
     <div class="review-detail">
-        <b>이 책의 리뷰 (5개)</b>
+        <b>이 책의 리뷰 ({{ review_info.count }}개)</b>
+        <button id="floating_modal_button" class="btn-01 floating-btn" data-bs-toggle="modal"
+                data-bs-target="#writing_modal">
+            <img src="images/writing.png" align="center" width="20px" height="20px"/> 리뷰 작성
+        </button>
     </div>
     <div class="reviews">
-        <div class="review mb10">
+        {% for review in review_info.reviews %}
+            <div class="review mb10">
             <div class="star-ratings">
                 <div class="star-ratings-fill space-x"
                      :style="{ width: ratingToPercent + '%' }">
@@ -81,96 +83,53 @@
             </div>
             <div>
                 <div class="reviewer">
-                    <b>username</b><span>| 2022.06.05</span>
+                    <b>{{ review.user.username }}</b><span>| {{ review.date }}</span>
                 </div>
                 <div>
-                    리뷰가 이러케 저러케...
-                    <br>리뷰가 이러케 저러케...
-                    <br>리뷰가 이러케 저러케...
-                    <br>리뷰가 이러케 저러케...
+                    {{ review.desc|linebreaks }}
                 </div>
             </div>
         </div>
-        <div class="review mb10">
-            <div class="star-ratings">
-                <div class="star-ratings-fill space-x"
-                     :style="{ width: ratingToPercent + '%' }">
-                    <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
-                </div>
-                <div class="star-ratings-base space-x">
-                    <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
-                </div>
+        {% endfor %}
+    </div>
+</div>
+
+<!-- # writing_modal -->
+<div class="modal fade" id="writing_modal" tabindex="-1" role="dialog" aria-labelledby="writing_modal"
+     aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header" style="border: none">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"
+                        style="background-color: transparent; border: none;">
+                    <span aria-hidden="true" style="font-weight: bold">&times;</span>
+                </button>
             </div>
-            <div>
-                <div class="reviewer">
-                    <b>username</b><span>| 2022.06.05</span>
+            <h4 class="modal-title" id="writing_modal_title">
+                <b>리뷰 작성하기</b></h4>
+            <div class="modal-body">
+                <div class="star-rating-wrap">
+                    <div class="star-rating space-x">
+                        <input type="radio" id="5-stars" name="rating" value="5" v-model="ratings"/>
+                        <label for="5-stars" class="star pr-4">★</label>
+                        <input type="radio" id="4-stars" name="rating" value="4" v-model="ratings"/>
+                        <label for="4-stars" class="star">★</label>
+                        <input type="radio" id="3-stars" name="rating" value="3" v-model="ratings"/>
+                        <label for="3-stars" class="star">★</label>
+                        <input type="radio" id="2-stars" name="rating" value="2" v-model="ratings"/>
+                        <label for="2-stars" class="star">★</label>
+                        <input type="radio" id="1-star" name="rating" value="1" v-model="ratings"/>
+                        <label for="1-star" class="star">★</label>
+                    </div>
                 </div>
-                <div>
-                    리뷰가 이러케 저러케...
-                </div>
+                <textarea class="modal-writing-box" placeholder="리뷰를 작성해주세요"></textarea>
             </div>
-        </div>
-        <div class="review mb10">
-            <div class="star-ratings">
-                <div class="star-ratings-fill space-x"
-                     :style="{ width: ratingToPercent + '%' }">
-                    <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
-                </div>
-                <div class="star-ratings-base space-x">
-                    <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
-                </div>
-            </div>
-            <div>
-                <div class="reviewer">
-                    <b>username</b><span>| 2022.06.05</span>
-                </div>
-                <div>
-                    리뷰가 이러케 저러케...
-                </div>
-            </div>
-        </div>
-        <div class="review mb10">
-            <div class="star-ratings">
-                <div class="star-ratings-fill space-x"
-                     :style="{ width: ratingToPercent + '%' }">
-                    <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
-                </div>
-                <div class="star-ratings-base space-x">
-                    <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
-                </div>
-            </div>
-            <div>
-                <div class="reviewer">
-                    <b>username</b><span>| 2022.06.05</span>
-                </div>
-                <div>
-                    리뷰가 이러케 저러케...
-                </div>
-            </div>
-        </div>
-        <div class="review mb10">
-            <div class="star-ratings">
-                <div class="star-ratings-fill space-x"
-                     :style="{ width: ratingToPercent + '%' }">
-                    <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
-                </div>
-                <div class="star-ratings-base space-x">
-                    <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
-                </div>
-            </div>
-            <div>
-                <div class="reviewer">
-                    <b>username</b><span>| 2022.06.05</span>
-                </div>
-                <div>
-                    리뷰가 이러케 저러케...
-                </div>
+            <div class="modal-footer" style="border: none">
+                <button type="submit" class="review-submit" align="center">리뷰 등록</button>
             </div>
         </div>
     </div>
-
 </div>
-
 <footer></footer>
 </body>
 
