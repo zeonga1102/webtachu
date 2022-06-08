@@ -12,4 +12,5 @@ class BookModel(models.Model):
     author = models.CharField(max_length=20)
     publisher = models.CharField(max_length=20)
     story = models.TextField()
+    star = models.FloatField(default=0.0)
 
