@@ -1,6 +1,5 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
-from django.db.models import Count, Avg
 from django.core.paginator import Paginator
 from books.models import BookModel
 from users.models import ReviewModel
