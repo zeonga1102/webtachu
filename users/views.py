@@ -90,7 +90,7 @@ def mypage(request):
         keyword = make_keyword(favorite_data, 'story', 10)
         print(keyword)
 
-        for review in review_data:
+        for review in reviews:
             review.star = review.star * 20
 
     return render(request, 'user/mypage.html', {'reviews': reviews, 'favorite': favorite, 'count':count})
