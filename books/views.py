@@ -50,7 +50,5 @@ def delete_review(request, book_id, review_id):
     return redirect('book_info', book_id)
 
 
-# @login_required
-# def modify_review(request, book_id, review_id):
-#     if request.method == "POST":
-#         review = ReviewModel.objects.get(id=review_id)
+
+
