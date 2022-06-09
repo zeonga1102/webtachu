@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 
 {% block title %}
-    나의 선호작
+    나의 선호작품
 {% endblock %}
 
 {% block content %}
@@ -9,7 +9,7 @@
     <section>
         <div class="likes">
             <div class="mypage-title">
-                선호작<span class="load"><a href="#">전체보기</a></span>
+                나의 선호작품
             </div>
             <hr class="profile-hr">
             <div class="book-box">
@@ -18,8 +18,8 @@
                         <a href="{% url 'book_info' fav.id %}">
                             <img src="{{ fav.cover }}"
                                  alt="{{ fav.title }} 표지"><br>
-                            <p class="book-title"><b>{{ fav.title }}</b></p>
-                            <p>{{ fav.author }}</p>
+                            <p class="book-title-mypage"><b>{{ fav.title }}</b></p>
+                            <p class="book-author-mypage">{{ fav.author }}</p>
                             <a href="{% url 'genre' fav.genre %}"><span class="genre-tag">{{ fav.genre }}</span></a>
                         </a>
                     </div>
@@ -27,6 +27,5 @@
             </div>
         </div>
     </section>
-
 
 {% endblock %}

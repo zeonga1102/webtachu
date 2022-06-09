@@ -96,3 +96,28 @@ def mypage(request):
             review.star = review.star * 20
 
     return render(request, 'user/mypage.html', {'reviews': reviews, 'favorite': favorite, 'count':count, 'keyword':keyword})
+
+@login_required
+def my_favorites(request):
+    if request.method == 'GET':
+        user = request.user
+        user_id = user.id
+        cursor = connection.cursor()
+        query = "SELECT * FROM users_favorite WHERE usermodel_id=%s" % (user_id)
+        result = cursor.execute(query)
+        stocks = cursor.fetchall()
+
+        stocks.sort(key=lambda x: -x[0])
+        favorite = []
+        for i in range(len(stocks)):
+            favorite.append(user.favorite.get(id=stocks[i][2]))
+        return render(request, 'user/favorites.html',{'favorite': favorite})
+
+@login_required
+def my_reviews(request):
+    if request.method == 'GET':
+        user = request.user
+        reviews = ReviewModel.objects.filter(user=user)[::-1]
+        for review in reviews:
+            review.star = review.star * 20
+        return render(request, 'user/reviews.html',{'reviews': reviews})

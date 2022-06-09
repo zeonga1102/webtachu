@@ -8,7 +8,7 @@
 
     <section>
         <div class="reviews-mypage">
-            <div class="mypage-title">리뷰<span class="load"><a href="#">전체보기</a></span></div>
+            <div class="mypage-title">나의 리뷰</div>
             <hr class="profile-hr">
             {% for review in reviews %}
                 <div class="review-mypage">
@@ -20,9 +20,21 @@
                     </div>
                     <div class="review-detail-mypage">
                         <h4><a href="{% url 'book_info' review.book.id %}">{{ review.book.title }}</a></h4>
-                        <p><a href="{% url 'genre' review.book.genre %}"><span class="genre-tag">{{ review.book.genre }}</span></a> | <b>글</b> {{ review.book.author }} | <b>출판사</b> {{ review.book.publisher }}</p>
-                        <p><span class="star">{{ review.star }}</span></p>
-                        <p><span class="review_date">작성일: {{ review.date }}</span></p>
+                        <p><a href="{% url 'genre' review.book.genre %}"><span
+                                class="genre-tag">{{ review.book.genre }}</span></a> | <b>글</b> {{ review.book.author }}
+                            | <b>출판사</b> {{ review.book.publisher }}</p>
+                        {#                        <p><span class="star">{{ review.star }}</span></p>#}
+                        <p>
+                        <div class="star-ratings">
+                            <div class="star-ratings-fill space-x" style="width: {{ review.star }}%">
+                                <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+                            </div>
+                            <div class="star-ratings-base space-x">
+                                <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+                            </div>
+                        </div>
+                        </p>
+                        <p><span class="review_date">리뷰작성일: {{ review.date | date:'Y-m-d' }}</span></p>
                         <p><span class="comment">{{ review.desc }}</span></p>
                     </div>
                 </div>
