@@ -5,6 +5,7 @@ from django.contrib import auth
 from django.contrib.auth.decorators import login_required
 from django.db import connection
 import os
+from books.book_views import make_keyword
 
 
 # Create your views here.
@@ -76,11 +77,21 @@ def mypage(request):
         context = {'stocks': stocks}
         print(context)
 
-        favorite = user.favorite.all().order_by()[:5]
-        reviews = ReviewModel.objects.filter(user_id=user.id).order_by('-date')[:3]
-        for review in reviews:
-            review.star = review.star * 20
-        fav_cnt = user.favorite.all().count()
-        review_cnt = ReviewModel.objects.filter(user_id=user.id).count()
+        review_data = ReviewModel.objects.filter(user=user)
+        favorite_data = user.favorite.all()
+
+        favorite = favorite_data[::-1][:5]
+        reviews = review_data[::-1][:3]
+
+        fav_cnt = favorite_data.count()
+        review_cnt = review_data.count()
         count = {'fav':fav_cnt, 'rev':review_cnt}
-        return render(request, 'user/mypage.html', {'reviews': reviews, 'favorite': favorite, 'count':count})
+
+        keyword = make_keyword(favorite_data, 'story', 10)
+        print(keyword)
+
+        for review in review_data:
+            review.star = review.star * 20
+
+    return render(request, 'user/mypage.html', {'reviews': reviews, 'favorite': favorite, 'count':count})
+

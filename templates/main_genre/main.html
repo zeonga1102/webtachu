@@ -80,156 +80,29 @@
     <div style="margin-top: 30px">
         <div class="best_hr_text">Today best top 20</div>
         <hr>
+        {% for book in li_list %}
         <div class="profile_group">
             <div class="best_profile_group">
                 <div class="best_profile_box">
-                    <div class="best_cover_image"></div>
+                    <div class="best_cover_image" style="background-image: url({{ book.cover }})"></div>
                     <div>
-                        <div class="title_font" style="text-align: center">
-                            조선전력공사
-                        </div>
-                        <div class="writer">
-                            작가명
-                        </div>
-                        <div class="genre">
-                            장르
-                        </div>
+                        <div class="title_font" style="text-align: center">{{ book.title }}</div>
+                        <div class="genre">{{ book.genre }}</div>
+                        <div class="writer">{{ book.author }} | {{ book.detail }}</div>
                         <div class="star-ratings" style="margin: auto">
-                            <div
-                                    class="star-ratings-fill space-x-2 text-lg"
-                                    :style="{ width: ratingToPercent + '%' }"
-                            >
+                            <div class="star-ratings-fill space-x" style="width: {{ book.star_width }}%">
                                 <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
                             </div>
-                            <div class="star-ratings-base space-x-2 text-lg">
+                            <div class="star-ratings-base space-x">
                                 <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
                             </div>
                         </div>
+                        <b>{{ book.star }}</b>
                     </div>
                 </div>
-                {#/////////////////////#}
             </div>
         </div>
-        <div class="profile_group">
-            <div class="best_profile_group">
-                <div class="best_profile_box">
-                    <div class="best_cover_image"></div>
-                    <div>
-                        <div class="title_font" style="text-align: center">
-                            조선전력공사
-                        </div>
-                        <div class="writer">
-                            작가명
-                        </div>
-                        <div class="genre">
-                            장르
-                        </div>
-                        <div class="star-ratings" style="margin: auto">
-                            <div
-                                    class="star-ratings-fill space-x-2 text-lg"
-                                    :style="{ width: ratingToPercent + '%' }"
-                            >
-                                <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
-                            </div>
-                            <div class="star-ratings-base space-x-2 text-lg">
-                                <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                {#//////////////////////#}
-            </div>
-        </div>
-        <div class="profile_group">
-            <div class="best_profile_group">
-                <div class="best_profile_box">
-                    <div class="best_cover_image"></div>
-                    <div>
-                        <div class="title_font" style="text-align: center">
-                            조선전력공사
-                        </div>
-                        <div class="writer">
-                            작가명
-                        </div>
-                        <div class="genre">
-                            장르
-                        </div>
-                        <div class="star-ratings" style="margin: auto">
-                            <div
-                                    class="star-ratings-fill space-x-2 text-lg"
-                                    :style="{ width: ratingToPercent + '%' }"
-                            >
-                                <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
-                            </div>
-                            <div class="star-ratings-base space-x-2 text-lg">
-                                <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                {#//////////////////////#}
-            </div>
-        </div>
-        <div class="profile_group">
-            <div class="best_profile_group">
-                <div class="best_profile_box">
-                    <div class="best_cover_image"></div>
-                    <div>
-                        <div class="title_font" style="text-align: center">
-                            조선전력공사
-                        </div>
-                        <div class="writer">
-                            작가명
-                        </div>
-                        <div class="genre">
-                            장르
-                        </div>
-                        <div class="star-ratings" style="margin: auto">
-                            <div
-                                    class="star-ratings-fill space-x-2 text-lg"
-                                    :style="{ width: ratingToPercent + '%' }"
-                            >
-                                <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
-                            </div>
-                            <div class="star-ratings-base space-x-2 text-lg">
-                                <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                {#//////////////////////#}
-            </div>
-        </div>
-        <div class="profile_group">
-            <div class="best_profile_group">
-                <div class="best_profile_box">
-                    <div class="best_cover_image"></div>
-                    <div>
-                        <div class="title_font" style="text-align: center">
-                            조선전력공사
-                        </div>
-                        <div class="writer">
-                            작가명
-                        </div>
-                        <div class="genre">
-                            장르
-                        </div>
-                        <div class="star-ratings" style="margin: auto">
-                            <div
-                                    class="star-ratings-fill space-x-2 text-lg"
-                                    :style="{ width: ratingToPercent + '%' }"
-                            >
-                                <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
-                            </div>
-                            <div class="star-ratings-base space-x-2 text-lg">
-                                <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                {#//////////////////////#}
-            </div>
-        </div>
+    {% endfor %}
     </div>
 
 {% endblock %}

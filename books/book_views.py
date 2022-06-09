@@ -5,6 +5,8 @@ from collections import Counter
 from .models import BookModel
 from users.models import ReviewModel
 
+from django.db.models import Count, Avg
+
 stopwords = ['접기', '더보기', '아', '휴', '아이구', '아이쿠', '아이고', '어', '나', '우리', '저희', '따라', '의해', '을', '를',
              '에', '의', '가', '으로', '로', '에게', '뿐이다', '의거하여', '근거하여', '입각하여', '기준으로', '예하면', '예를',
              '들면', '예를', '들자면', '저', '소인', '저희', '지말고', '하지마', '하지마라', '다른', '물론', '또한', '그리고',
@@ -84,7 +86,7 @@ def detail_view(request, id):
     if star_width < 0:
         star_width = 0
         
-    keyword = make_review_keyword(reviews)
+    keyword = make_keyword(reviews, 'desc', 5)
     book_info = {'book': book, 'star': star_width, 'keyword': keyword}
 
     for review in reviews:
@@ -95,27 +97,31 @@ def detail_view(request, id):
 
     review_info = {'reviews': reviews, 'count': reviews.count()}
 
+    # star = reviews.annotate(reviews_count=Count('book_id')).annotate(star_avg=Avg('book_id__star'))
+    #
+    # print(star.values()[0]['star_avg'])
+
     return render(request, 'detail.html', {'book_info': book_info, 'review_info': review_info, 'is_favorite': is_favorite})
 
 
-def make_review_keyword(reviews):
+def make_keyword(data, field, topn):
     global stopwords
 
     mecab = Mecab(dicpath='C:/mecab/mecab-ko-dic')
 
-    review_tokens = []
+    data_tokens = []
 
-    for review in reviews.values():
-        tmp = mecab.nouns(review['desc'])
+    for d in data.values():
+        tmp = mecab.nouns(d[field])
         tokens = []
         for token in tmp:
             if not token in stopwords:
                 tokens.append(token)
-        review_tokens += tokens
+        data_tokens += tokens
 
-    count = Counter(review_tokens)
+    count = Counter(data_tokens)
     keywords = []
-    for word in count.most_common(5):
+    for word in count.most_common(topn):
         keywords.append(word[0])
 
     return keywords
