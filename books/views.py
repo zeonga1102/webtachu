@@ -70,18 +70,18 @@ def delete_review(request, book_id, review_id):
     return redirect('book_info', book_id)
 
 
-# @login_required
-# def modify_review(request, book_id, review_id):
-#     origin_review = ReviewModel.objects.get(id=review_id)
-#
-#     if request.method == "POST":
-#         star = int(request.POST.get('rating', 0))
-#         review = request.POST.get('review', '')
-#         date = timezone.now()
-#
-#         origin_review.objects.update(star=star, desc=review, date=date)
-#         modify_review = True
-#         return redirect('book_info', book_id, modify_review)
+@login_required
+def modify_review(request, book_id, review_id):
+    origin_review = ReviewModel.objects.filter(id=review_id)
+
+    if request.method == "POST":
+        star = int(request.POST.get('rating', 0))
+        review = request.POST.get('review', '')
+        date = timezone.now()
+
+        origin_review.update(star=star, desc=review, date=date)
+
+        return redirect('book_info', book_id)
 
 
 def get_today_20():
