@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    나의 선호작
+{% endblock %}
+
+{% block content %}
+
+    <section>
+        <div class="likes">
+            <div class="mypage-title">
+                선호작<span class="load"><a href="#">전체보기</a></span>
+            </div>
+            <hr class="profile-hr">
+            <div class="book-box">
+                {% for fav in favorite %}
+                    <div class="book">
+                        <a href="{% url 'book_info' fav.id %}">
+                            <img src="{{ fav.cover }}"
+                                 alt="{{ fav.title }} 표지"><br>
+                            <p class="book-title"><b>{{ fav.title }}</b></p>
+                            <p>{{ fav.author }}</p>
+                            <a href="{% url 'genre' fav.genre %}"><span class="genre-tag">{{ fav.genre }}</span></a>
+                        </a>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+
+
+{% endblock %}
