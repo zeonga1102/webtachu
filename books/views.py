@@ -96,6 +96,7 @@ def get_today_20():
     li_list = []
 
     for li in lis:
+        url = 'https://series.naver.com' + li.select_one('a')['href']
         cover_line = li.select_one('a > img')
         cover_m79 = cover_line['src']
         cover_m260 = cover_m79.replace("type=m79", "type=m260")
@@ -106,7 +107,7 @@ def get_today_20():
 
         star_width = float(star) * 10
 
-        dic = {'cover':cover_m260, 'title':title, 'author':author, 'author':author, 'star':star, 'star_width':star_width, 'detail':detail}
+        dic = {'url':url, 'cover':cover_m260, 'title':title, 'author':author, 'author':author, 'star':star, 'star_width':star_width, 'detail':detail}
 
         li_list.append(dic)
 
