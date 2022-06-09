@@ -1,12 +1,10 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
-from django.db.models import Count, Avg
 from django.core.paginator import Paginator
 from books.models import BookModel
 from users.models import ReviewModel
 from django.utils import timezone
 import requests
-import pandas as pd
 from bs4 import BeautifulSoup
 
 
@@ -32,8 +30,7 @@ def create_review(request, book_id):
         review = request.POST.get('review', '')
 
         ReviewModel.objects.create(user=user, book=current_book, star=star, desc=review)
-        modify_review = False
-        return redirect('book_info', book_id, modify_review)
+        return redirect('book_info', book_id)
 
 
 @login_required
@@ -41,6 +38,7 @@ def delete_review(request, book_id, review_id):
     review = ReviewModel.objects.get(id=review_id)
     review.delete()
     return redirect('book_info', book_id)
+
 
 # @login_required
 # def modify_review(request, book_id, review_id):
@@ -69,7 +67,8 @@ def get_today_20():
 
     for li in lis:
         cover_line = li.select_one('a > img')
-        cover = cover_line['src']
+        cover_m79 = cover_line['src']
+        cover_m260 = cover_m79.replace("type=m79", "type=m260")
         title = cover_line['alt']
         author = li.select_one('div.comic_cont > p.info > span:nth-child(4)').text
         star = li.select_one('div.comic_cont > p.info > em.score_num').text
@@ -77,7 +76,7 @@ def get_today_20():
 
         star_width = float(star) * 10
 
-        dic = {'cover':cover, 'title':title, 'author':author, 'author':author, 'star':star, 'star_width':star_width, 'detail':detail}
+        dic = {'cover':cover_m260, 'title':title, 'author':author, 'author':author, 'star':star, 'star_width':star_width, 'detail':detail}
 
         li_list.append(dic)
 
