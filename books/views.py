@@ -6,27 +6,28 @@ from books.models import BookModel
 from users.models import ReviewModel
 
 
+
 def genre_view(request, name):
     books_list = BookModel.objects.filter(genre=name)
     page = request.GET.get('page', 1)
     paginator = Paginator(books_list, 10)
     pages = paginator.page(page)
-    paginator = Paginator(books_list, 1)
-    genre_names = paginator.page(page)
+    for book in books_list:
+        book.star = book.star * 20
 
     book_all ={
         'pages' : pages,
-        'genre_names' : genre_names,
-        'books_list_num' : books_list,
+        'name' : name,
+        'books_list_num' : books_list.count(),
     }
-
-    return render(request, 'main_genre/genre.html', book_all)
+    return render(request, 'main_genre/genre.html', {'book_all': book_all} )
 
 
 def main_view(request):
     user = request.user
     likes = user.favorite.all()[::-1][:5]
-
+    for book in likes:
+        book.star = book.star * 20
     return render(request, 'main_genre/main.html', {'likes': likes})
 
 

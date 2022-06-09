@@ -6,18 +6,13 @@
 
 {% block content %}
     <div class="main_box main_border">
-
-        {% for genre_name in genre_names %}
-            <div class="title_text">
-                {{ genre_name.genre }}
-            </div>
-        {% endfor %}
-
-        <div class="count_box">
-            총 {{ books_list_num | length }}개의 작품
+        <div class="title_text">
+            {{ book_all.name }}
         </div>
-
-        {% for page in pages %}
+        <div class="count_box">
+            총 {{ book_all.books_list_num }}개의 작품
+        </div>
+        {% for page in book_all.pages %}
             <a href="{% url 'book_info' page.id %}">
                 <div class="content_box display_flex" style="margin: auto">
                     <div class="cover_image"><img src="{{ page.cover }}"></div>
@@ -27,10 +22,7 @@
                         </div>
                         <div class="display_flex">
                             <div class="star-ratings">
-                                <div
-                                        class="star-ratings-fill space-x-2 text-lg"
-                                        :style="{ width: ratingToPercent + '%' }"
-                                >
+                                <div class="star-ratings-fill space-x-2" style="width: {{ page.star }}%">
                                     <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
                                 </div>
                                 <div class="star-ratings-base space-x-2 text-lg">
@@ -50,14 +42,14 @@
         {% endfor %}
 
         <div style="text-align: center">
-            {% if pages.has_previous %}
-                <a href='?page={{ pages.number|add:-1 }}'>Previous</a>
+            {% if book_all.pages.has_previous %}
+                <a href='?page={{ book_all.pages.number|add:-1 }}'>Previous</a>
             {% endif %}
 
-            Page {{ pages.number }} of {{ pages.paginator.num_pages }}
+            Page {{ book_all.pages.number }} of {{ book_all.pages.paginator.num_pages }}
 
-            {% if pages.has_next %}
-                <a href='?page={{ pages.number|add:+1 }}'>Next</a>
+            {% if book_all.pages.has_next %}
+                <a href='?page={{ book_all.pages.number|add:+1 }}'>Next</a>
             {% endif %}
         </div>
 
