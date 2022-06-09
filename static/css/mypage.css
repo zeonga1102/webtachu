@@ -24,14 +24,9 @@ a:hover {
     border: 2px solid #aff4c6;
 }
 
-p {
-    margin: 8px 0;
-    /*word-break: break-all;*/
-}
 
 .genre-tag {
     border-radius: 5px;
-    /*border: 1px solid #aff4c6;*/
     background-color: #aff4c6;
     padding: 2px 4px;
 }
@@ -75,7 +70,7 @@ p {
     background-color: white;
 }
 
-.favorites {
+.favorites-mypage {
     width: 250px;
     padding: 20px;
     border-radius: 10px;
@@ -88,29 +83,37 @@ p {
 
 .book-box {
     display: flex;
-    justify-content: space-around;
+    flex-flow: wrap;
+    justify-content: flex-start;
 }
 
 .book {
-    margin: 0 5px;
+    margin: 0 6px;
 }
 
-.book-title {
+.book-title-mypage {
     width: 172px;
     text-overflow: ellipsis;
     overflow: hidden;
     white-space: nowrap;
+    margin-bottom: 5px;
 }
 
 .book img {
+    width: 182px;
     height: 260px;
+    margin-bottom: 10px;
+}
+
+.book-author-mypage {
+    margin-bottom: 10px;
 }
 
 
-.reviews {
+.reviews-mypage {
 }
 
-.review {
+.review-mypage {
     display: flex;
     margin: 15px 0;
 }
