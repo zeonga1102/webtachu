@@ -64,10 +64,12 @@ def home(request):
 def mypage(request):
     if request.method == 'GET':
         user = request.user
-        favorite = user.favorite.all()
-        print(favorite)
-
-        # books = BookModel.objects.filter(id=user_id)
-        # reviews = ReviewModel.objects.filter(user_id=user_id)
+        # favorite = user.favorite.all().order_by('-id')[:5]
+        favorite = user.favorite.all()[::-1][:5]
         reviews = ReviewModel.objects.filter(user_id=user.id)[::-1][:3]
-        return render(request, 'user/mypage.html', {'reviews':reviews, 'favorite':favorite})
+
+        fav_cnt = user.favorite.all().count()
+        review_cnt = ReviewModel.objects.filter(user_id=user.id).count()
+        count = {'fav':fav_cnt, 'rev':review_cnt}
+
+        return render(request, 'user/mypage.html', {'reviews': reviews, 'favorite': favorite, 'count':count})

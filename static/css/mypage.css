@@ -5,7 +5,7 @@ body {
 section {
     width: 1000px;
     margin: auto;
-    padding: 20px 20px 10px 20px;
+    padding: 10px;
 }
 
 a {
@@ -38,10 +38,13 @@ p {
 
 .mypage-title {
     font-size: 20px;
+    font-weight: 600;
+    margin-top: 25px;
 }
 
 .load {
     font-size: 10px;
+    font-weight: 300;
     margin-left: 20px;
 }
 
@@ -109,10 +112,11 @@ p {
 
 .review {
     display: flex;
-    /*background-color: lightblue;*/
+    margin: 15px 0;
 }
 
 .review-cover-img img {
+    width: 182px;
     height: 260px;
 }
 
