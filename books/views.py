@@ -77,7 +77,10 @@ def delete_review(request, book_id, review_id):
 
     review.delete()
 
-    new_avg = (current_book.star * review_count - star) / (review_count - 1)
+    if review_count == 1:
+        new_avg = 0
+    else:
+        new_avg = (current_book.star * review_count - star) / (review_count - 1)
     current_book.star = new_avg
     current_book.save()
 
