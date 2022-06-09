@@ -25,10 +25,7 @@
                                     {{ like.genre }}
                                 </div>
                                 <div class="star-ratings" style="margin: auto">
-                                    <div
-                                            class="star-ratings-fill space-x-2 text-lg"
-                                            :style="{ width: ratingToPercent + '%' }"
-                                    >
+                                    <div class="star-ratings-fill space-x-2" style="width: {{ like.star }}%">
                                         <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
                                     </div>
                                     <div class="star-ratings-base space-x-2 text-lg">
