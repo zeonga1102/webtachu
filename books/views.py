@@ -4,6 +4,7 @@ from django.core.paginator import Paginator
 from books.models import BookModel
 from users.models import ReviewModel
 from django.utils import timezone
+from django.db import connection
 import requests
 from bs4 import BeautifulSoup
 from gensim.models.doc2vec import Doc2Vec
@@ -33,13 +34,27 @@ def genre_view(request, name):
 
 def main_view(request):
     user = request.user
-    likes = user.favorite.all()[::-1][:5]
-    li_list = get_today_20()
-    for book in likes:
-        book.star = book.star * 20
 
-    favorite = user.favorite.all()
-    keyword = make_keyword(favorite, 'story', 20)
+    cursor = connection.cursor()
+    query = "SELECT * FROM users_favorite WHERE usermodel_id=%s" % (user.id)
+    cursor.execute(query)
+    stocks = cursor.fetchall()
+    stocks.sort(key=lambda x: -x[0])
+
+    stocks_length = len(stocks)
+    if stocks_length > 5:
+        stocks_length == 5
+
+    favorite = []
+    for i in range(stocks_length):
+        fav = user.favorite.get(id=stocks[i][2])
+        fav.star = fav.star * 20
+        favorite.append(fav)
+
+    li_list = get_today_20()
+
+    favorite_all = user.favorite.all()
+    keyword = make_keyword(favorite_all, 'story', 20)
     keyword_vec = model.infer_vector(keyword)
     most_similar = model.docvecs.most_similar([keyword_vec], topn=5)
 
@@ -48,7 +63,7 @@ def main_view(request):
         datas.append(BookModel.objects.get(id=index+1))
         print(BookModel.objects.get(id=index+1).cover)
 
-    return render(request, 'main_genre/main.html', {'likes': likes, 'li_list':li_list, 'datas': datas})
+    return render(request, 'main_genre/main.html', {'likes': favorite, 'li_list':li_list, 'datas': datas})
 
 
 @login_required
