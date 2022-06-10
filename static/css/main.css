@@ -30,12 +30,6 @@ body {
     font-size: 17px;
 }
 
-.profile_box {
-    width: 170px;
-    /*height: 330px;*/
-    margin: 20px 20px 20px 20px;
-}
-
 .writer {
     font-size: 13px;
     text-align: center;
@@ -52,6 +46,12 @@ body {
 .profile_group {
     display: flex;
     margin: auto;
+}
+
+.profile_box {
+    width: 185px;
+    /*height: 330px;*/
+    margin: 20px 20px 20px 20px;
 }
 
 .best_profile_box {
