@@ -25,15 +25,6 @@ body {
     background-color: white;
 }
 
-.main_cover_image {
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center;
-    width: 170px;
-    height: 260px;
-    margin-bottom: 15px;
-}
-
 .title_font {
     font-weight: bold;
     font-size: 17px;
@@ -69,12 +60,18 @@ body {
     margin: 20px 20px 20px 20px;
 }
 
-.best_cover_image {
-    background-image: url('https://comicthumb-phinf.pstatic.net/20220513_93/pocket_1652410170254EHj8d_JPEG/%28%C8%AD%C1%FA%C1%B6%C1%A4%29%C7%A5%C1%F6_%B9%CC%C4%A3%C0%E7%B4%C9%C0%C7%B8%D5%C4%A1%C5%B2-%C4%AE%C0%E2%C0%CC%28%C5%E4%B4%CF%C5%E4%29_220513.jpg?type=m260');
-    background-repeat: no-repeat;
-    background-size: contain;
-    background-position: center;
-    height: 260px;
+/*.best_cover_image {*/
+/*    background-image: url('https://comicthumb-phinf.pstatic.net/20220513_93/pocket_1652410170254EHj8d_JPEG/%28%C8%AD%C1%FA%C1%B6%C1%A4%29%C7%A5%C1%F6_%B9%CC%C4%A3%C0%E7%B4%C9%C0%C7%B8%D5%C4%A1%C5%B2-%C4%AE%C0%E2%C0%CC%28%C5%E4%B4%CF%C5%E4%29_220513.jpg?type=m260');*/
+/*    background-repeat: no-repeat;*/
+/*    background-size: contain;*/
+/*    background-position: center;*/
+/*    height: 260px;*/
+/*    margin-bottom: 15px;*/
+/*}*/
+
+.cover_image {
+    width: 185px;
+    height: 280px;
     margin-bottom: 15px;
 }
 
