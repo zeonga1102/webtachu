@@ -15,12 +15,7 @@ body {
     /*background-color: #f3fdf5;*/
 }
 
-.title_eclipse {
-    width: 172px;
-    text-overflow: ellipsis;
-    overflow: hidden;
-    white-space: nowrap;
-}
+
 
 .border_solid {
     border: 1px solid red;
@@ -35,6 +30,12 @@ body {
 .title_font {
     font-weight: bold;
     font-size: 17px;
+}
+
+.title_eclipse {
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
 }
 
 .writer {
@@ -57,24 +58,14 @@ body {
 
 .profile_box {
     width: 185px;
-    /*height: 330px;*/
     margin: 20px 20px 20px 20px;
 }
 
 .best_profile_box {
-    width: 250px;
+    width: 185px;
     height: 400px;
     margin: 20px 20px 20px 20px;
 }
-
-/*.best_cover_image {*/
-/*    background-image: url('https://comicthumb-phinf.pstatic.net/20220513_93/pocket_1652410170254EHj8d_JPEG/%28%C8%AD%C1%FA%C1%B6%C1%A4%29%C7%A5%C1%F6_%B9%CC%C4%A3%C0%E7%B4%C9%C0%C7%B8%D5%C4%A1%C5%B2-%C4%AE%C0%E2%C0%CC%28%C5%E4%B4%CF%C5%E4%29_220513.jpg?type=m260');*/
-/*    background-repeat: no-repeat;*/
-/*    background-size: contain;*/
-/*    background-position: center;*/
-/*    height: 260px;*/
-/*    margin-bottom: 15px;*/
-/*}*/
 
 .cover_image {
     width: 185px;

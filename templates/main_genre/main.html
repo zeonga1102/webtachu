@@ -5,10 +5,10 @@
 {% endblock %}
 
 {% block content %}
-    <div style="margin-top: 30px">
+    <div id="box" style="margin-top: 30px">
         <div class="hr_text">최근 선호작</div>
         <hr class="main_hr">
-        <div class="profile_group">
+        <div class="profile_group" style="min-height: 200px">
             <div class="profile_group">
                 {% for like in likes %}
                     <div class="profile_box">
@@ -41,9 +41,10 @@
             </div>
         </div>
     </div>
+    <div>
+    </div>
     <div style="margin-top: 30px">
 
-        {#    추천작(5개) ////////////////#}
         <div class="hr_text">추천작</div>
         <hr class="main_hr">
         <div class="profile_group">
@@ -81,34 +82,38 @@
         </div>
     </div>
 
-    {#    Today best top 20 ///////////#}
     <div style="margin-top: 30px">
         <div class="hr_text">Today best top 20</div>
         <hr class="main_hr">
         <div class="profile_group">
             <div class="best_profile_group">
                 {% for book in li_list %}
-                    <div class="best_profile_box">
-                        <a href= {{ book.url }}>
-                            <img class="cover_image" src="{{ book.cover }}">
-                            <div>
-                                <div class="title_font title_eclipse" style="text-align: center">{{ book.title }}</div>
-                                <div class="genre">{{ book.genre }}</div>
-                                <div class="writer">{{ book.author }} | {{ book.detail }}</div>
-                                <div class="star-wrap mb10" style="justify-content: center">
-                                    <div class="star-ratings">
-                                        <div class="star-ratings-fill space-x" style="width: {{ book.star_width }}%">
-                                            <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+                    <div style="margin: auto">
+                        <div class="best_profile_box">
+                            <a href= {{ book.url }}>
+                                <img class="cover_image" src="{{ book.cover }}">
+                                <div>
+                                    <div class="title_font title_eclipse"
+                                         style="text-align: center">{{ book.title }}</div>
+                                    <div class="genre">{{ book.genre }}</div>
+                                    <div class="writer">{{ book.author }} | {{ book.detail }}</div>
+                                    <div class="star-wrap mb10" style="justify-content: center">
+                                        <div class="star-ratings">
+                                            <div class="star-ratings-fill space-x"
+                                                 style="width: {{ book.star_width }}%">
+                                                <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+                                            </div>
+                                            <div class="star-ratings-base space-x">
+                                                <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+                                            </div>
                                         </div>
-                                        <div class="star-ratings-base space-x">
-                                            <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
-                                        </div>
+                                        <b>{{ book.star }}</b>
                                     </div>
-                                    <b>{{ book.star }}</b>
                                 </div>
-                            </div>
-                        </a>
+                            </a>
+                        </div>
                     </div>
+
 
                 {% endfor %}
             </div>
