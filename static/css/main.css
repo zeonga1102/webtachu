@@ -4,10 +4,10 @@
     border: 2px solid #aff4c6;
 }
 
-body{
+body {
 }
 
-.hr_text{
+.hr_text {
     margin: 10px auto 0px auto;
     width: 1200px;
     font-weight: bold;
@@ -34,36 +34,36 @@ body{
     margin-bottom: 15px;
 }
 
-.title_font{
+.title_font {
     font-weight: bold;
     font-size: 17px;
 }
 
-.profile_box{
+.profile_box {
     width: 170px;
     /*height: 330px;*/
     margin: 20px 20px 20px 20px;
 }
 
-.writer{
+.writer {
     font-size: 13px;
     text-align: center;
     color: #aaa9a9;
 }
 
-.genre{
+.genre {
     font-size: 13px;
     text-align: center;
     color: #aaa9a9;
     margin-top: 5px;
 }
 
-.profile_group{
+.profile_group {
     display: flex;
     margin: auto;
 }
 
-.best_profile_box{
+.best_profile_box {
     width: 250px;
     height: 400px;
     margin: 20px 20px 20px 20px;
@@ -78,7 +78,7 @@ body{
     margin-bottom: 15px;
 }
 
-.best_profile_group{
+.best_profile_group {
     width: 1200px;
     display: flex;
     margin: auto;
@@ -86,28 +86,28 @@ body{
 }
 
 .star-ratings {
-  color: #aaa9a9;
-  position: relative;
-  unicode-bidi: bidi-override;
-  width: max-content;
-  -webkit-text-fill-color: transparent; /* Will override color (regardless of order) */
-  -webkit-text-stroke-width: 1.3px;
-  -webkit-text-stroke-color: #2b2a29;
+    color: #aaa9a9;
+    position: relative;
+    unicode-bidi: bidi-override;
+    width: max-content;
+    -webkit-text-fill-color: transparent; /* Will override color (regardless of order) */
+    -webkit-text-stroke-width: 1.3px;
+    -webkit-text-stroke-color: #2b2a29;
 }
 
 .star-ratings-fill {
-  color: #fff58c;
-  padding: 0;
-  position: absolute;
-  z-index: 1;
-  display: flex;
-  top: 0;
-  left: 0;
-  overflow: hidden;
-  -webkit-text-fill-color: gold;
+    color: #fff58c;
+    padding: 0;
+    position: absolute;
+    z-index: 1;
+    display: flex;
+    top: 0;
+    left: 0;
+    overflow: hidden;
+    -webkit-text-fill-color: gold;
 }
 
 .star-ratings-base {
-  z-index: 0;
-  padding: 0;
+    z-index: 0;
+    padding: 0;
 }
