@@ -13,7 +13,7 @@
                 {% for like in likes %}
                     <div class="profile_box">
                         <a href="{% url 'book_info' like.id %}">
-                            <img class="main_cover_image" src="{{ like.cover }}">
+                            <img class="cover_image" src="{{ like.cover }}">
                             <div>
                                 <div class="title_font title_eclipse" style="text-align: center">
                                     {{ like.title }}
@@ -51,7 +51,7 @@
                 {% for data in datas %}
                     <a href="{% url 'book_info' data.id %}">
                         <div class="profile_box">
-                            <div class="main_cover_image" style="background-image: url({{ data.cover }})"></div>
+                            <img class="cover_image" src="{{ data.cover }}">
                             <div>
                                 <div class="title_font title_eclipse" style="text-align: center">
                                     {{ data.title }}
@@ -90,7 +90,7 @@
                 {% for book in li_list %}
                     <div class="best_profile_box">
                         <a href= {{ book.url }}>
-                            <div class="best_cover_image" style="background-image: url({{ book.cover }})"></div>
+                            <img class="cover_image" src="{{ book.cover }}">
                             <div>
                                 <div class="title_font title_eclipse" style="text-align: center">{{ book.title }}</div>
                                 <div class="genre">{{ book.genre }}</div>
