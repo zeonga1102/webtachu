@@ -46,8 +46,10 @@ def main_view(request):
     datas = []
     for index, similarity in most_similar:
         datas.append(BookModel.objects.get(id=index+1))
-        print(BookModel.objects.get(id=index+1).cover)
+        print(BookModel.objects.get(id=index+1).id, BookModel.objects.get(id=index+1).title)
 
+    for book in datas:
+        book.star = book.star * 20
 
     return render(request, 'main_genre/main.html', {'likes': likes, 'li_list':li_list, 'datas': datas})
 
