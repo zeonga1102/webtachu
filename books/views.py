@@ -10,7 +10,6 @@ from bs4 import BeautifulSoup
 from gensim.models.doc2vec import Doc2Vec
 from .book_views import make_keyword
 
-
 model = Doc2Vec.load('model.doc2vec')
 
 
@@ -23,12 +22,12 @@ def genre_view(request, name):
     for page in pages:
         page.star = page.star * 20
 
-    book_all ={
-        'pages' : pages,
-        'name' : name,
-        'books_list_num' : books_list.count(),
+    book_all = {
+        'pages': pages,
+        'name': name,
+        'books_list_num': books_list.count(),
     }
-    return render(request, 'main_genre/genre.html', {'book_all': book_all} )
+    return render(request, 'main_genre/genre.html', {'book_all': book_all})
 
 
 def main_view(request):
@@ -53,22 +52,29 @@ def main_view(request):
     li_list = get_today_20()
 
     favorite_all = user.favorite.all()
-    keyword = make_keyword(favorite_all, 'story', 20)
-    keyword_vec = model.infer_vector(keyword)
-    most_similar = model.docvecs.most_similar([keyword_vec], topn=favorite_all.count()+5)
+    print(favorite_all, "선호작 개수")
 
     datas = []
-    for index, similarity in most_similar:
-        recommend = BookModel.objects.get(id=index+1)
-        if not recommend in favorite_all:
-            datas.append(recommend)
-        if len(datas) == 5:
-            break
+    if len(favorite_all) == 0:
+        print("선호작 없음")
+
+    else:
+        print(datas, "선호작있음")
+        keyword = make_keyword(favorite_all, 'story', 20)
+        keyword_vec = model.infer_vector(keyword)
+        most_similar = model.docvecs.most_similar([keyword_vec], topn=favorite_all.count() + 5)
+        for index, similarity in most_similar:
+            recommend = BookModel.objects.get(id=index + 1)
+            if not recommend in favorite_all:
+                datas.append(recommend)
+            if len(datas) == 5:
+                break
+
 
     for book in datas:
         book.star = book.star * 20
 
-    return render(request, 'main_genre/main.html', {'likes': favorite, 'li_list':li_list, 'datas': datas})
+    return render(request, 'main_genre/main.html', {'likes': favorite, 'li_list': li_list, 'datas': datas})
 
 
 @login_required
@@ -146,8 +152,9 @@ def search(request, title):
 def get_today_20():
     url = 'https://series.naver.com/novel/top100List.series?rankingTypeCode=DAILY&categoryCode=ALL'
 
-    headers = {'User-Agent' : 'Mozilla/5.0 (Windows NT 10.0; Win64; x64)AppleWebKit/537.36 (KHTML, like Gecko) Chrome/73.0.3683.86 Safari/537.36'}
-    data = requests.get(url,headers=headers)
+    headers = {
+        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64)AppleWebKit/537.36 (KHTML, like Gecko) Chrome/73.0.3683.86 Safari/537.36'}
+    data = requests.get(url, headers=headers)
     soup = BeautifulSoup(data.text, 'html.parser')
 
     lis = soup.select('#content > div > ul > li')
@@ -166,7 +173,8 @@ def get_today_20():
 
         star_width = float(star) * 10
 
-        dic = {'url':url, 'cover':cover_m260, 'title':title, 'author':author, 'author':author, 'star':star, 'star_width':star_width, 'detail':detail}
+        dic = {'url': url, 'cover': cover_m260, 'title': title, 'author': author, 'author': author, 'star': star,
+               'star_width': star_width, 'detail': detail}
 
         li_list.append(dic)
 
