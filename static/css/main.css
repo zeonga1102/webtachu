@@ -24,8 +24,8 @@ body{
     background-color: white;
 }
 
-.cover_image {
-    height: 220px;
+.main_cover_image {
+    height: 210px;
     width: 170px;
     margin-bottom: 15px;
 }

@@ -13,7 +13,7 @@
                 {% for like in likes %}
                     <div class="profile_box">
                         <a href="{% url 'book_info' like.id %}">
-                            <div class="cover_image" style="background-image: url({{ like.cover }})"></div>
+                            <div class="main_cover_image" style="background-image: url({{ like.cover }})"></div>
                             <div>
                                 <div class="title_font" style="text-align: center">
                                     {{ like.title }}
