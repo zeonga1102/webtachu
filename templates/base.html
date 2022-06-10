@@ -46,7 +46,7 @@
 
 </head>
 <body>
-<nav class="navbar navbar-expand-md">
+<nav class="navbar navbar-expand-lg">
     <div class="container-fluid">
         <a class="navbar-brand me-3" href="/">
             <img
@@ -77,15 +77,17 @@
                 <li class="nav-item">
                     <a class="nav-link" href="{% url 'genre' '무협' %}">무협</a>
                 </li>
-
-                <li>
-                    <a id="search">
-                        <input id="search_text" type="text">
-                        <button onclick="click_search_button()">검색</button>
-                    </a>
-                </li>
-
             </ul>
+            <a id="search">
+                <div class="input-group input-group-sm mb-md-0 d-flex w-75">
+                    <input type="text" class="form-control" id="search_text" type="text" placeholder="Search"
+                           aria-label="Search" aria-describedby="button-addon2">
+                    <button class="btn btn-outline-success me-3" type="button" id="button-addon2"
+                            onclick="click_search_button()">Search
+                    </button>
+
+                </div>
+            </a>
             <div class="userinfo mb-2 mb-md-0">
                 <a href="{% url 'mypage' %}"><b>{{ user.first_name }}</b></a>님
                 <a href="/logout"><i class="bi bi-x-circle"></i></a>
