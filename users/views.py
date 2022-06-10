@@ -71,7 +71,7 @@ def mypage(request):
         user_id = user.id
         cursor = connection.cursor()
         query = "SELECT * FROM users_favorite WHERE usermodel_id=%s" % (user_id)
-        result = cursor.execute(query)
+        cursor.execute(query)
         stocks = cursor.fetchall()
 
         stocks_length = len(stocks)
@@ -101,6 +101,7 @@ def mypage(request):
 
     return render(request, 'user/mypage.html', {'reviews': reviews, 'favorite': favorite, 'count':count, 'keyword':keyword})
 
+
 @login_required
 def my_favorites(request):
     if request.method == 'GET':
@@ -116,6 +117,7 @@ def my_favorites(request):
         for i in range(len(stocks)):
             favorite.append(user.favorite.get(id=stocks[i][2]))
         return render(request, 'user/favorites.html',{'favorite': favorite})
+
 
 @login_required
 def my_reviews(request):

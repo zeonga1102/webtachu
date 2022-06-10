@@ -48,7 +48,6 @@ def main_view(request):
         datas.append(BookModel.objects.get(id=index+1))
         print(BookModel.objects.get(id=index+1).cover)
 
-
     return render(request, 'main_genre/main.html', {'likes': likes, 'li_list':li_list, 'datas': datas})
 
 
