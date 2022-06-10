@@ -55,11 +55,15 @@ def main_view(request):
     favorite_all = user.favorite.all()
     keyword = make_keyword(favorite_all, 'story', 20)
     keyword_vec = model.infer_vector(keyword)
-    most_similar = model.docvecs.most_similar([keyword_vec], topn=5)
+    most_similar = model.docvecs.most_similar([keyword_vec], topn=favorite_all.count()+5)
 
     datas = []
     for index, similarity in most_similar:
-        datas.append(BookModel.objects.get(id=index+1))
+        recommend = BookModel.objects.get(id=index+1)
+        if not recommend in favorite_all:
+            datas.append(recommend)
+        if len(datas) == 5:
+            break
 
     for book in datas:
         book.star = book.star * 20
