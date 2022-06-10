@@ -15,6 +15,13 @@ body {
     /*background-color: #f3fdf5;*/
 }
 
+.title_eclipse {
+    width: 172px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
 .border_solid {
     border: 1px solid red;
 }
