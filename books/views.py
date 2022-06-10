@@ -14,7 +14,6 @@ from .book_views import make_keyword
 model = Doc2Vec.load('model.doc2vec')
 
 
-
 def genre_view(request, name):
     books_list = BookModel.objects.filter(genre=name)
     page = request.GET.get('page', 1)
@@ -61,7 +60,9 @@ def main_view(request):
     datas = []
     for index, similarity in most_similar:
         datas.append(BookModel.objects.get(id=index+1))
-        print(BookModel.objects.get(id=index+1).cover)
+
+    for book in datas:
+        book.star = book.star * 20
 
     return render(request, 'main_genre/main.html', {'likes': favorite, 'li_list':li_list, 'datas': datas})
 
