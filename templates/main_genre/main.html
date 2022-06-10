@@ -7,7 +7,7 @@
 {% block content %}
     <div style="margin-top: 30px">
         <div class="hr_text">최근 선호작</div>
-        <hr>
+        <hr class="main_hr">
         <div class="profile_group">
             <div class="profile_group">
                 {% for like in likes %}
@@ -21,9 +21,6 @@
                                 <div class="writer" style="text-align: center">
                                     {{ like.author }}
                                 </div>
-                                <div class="genre" style="text-align: center">
-                                    {{ like.genre }}
-                                </div>
                                 <div class="star-ratings" style="margin: auto">
                                     <div class="star-ratings-fill space-x-2" style="width: {{ like.star }}%">
                                         <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
@@ -31,6 +28,11 @@
                                     <div class="star-ratings-base space-x-2 text-lg">
                                         <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
                                     </div>
+                                </div>
+                                <div class="genre">
+                                    <a href="{% url 'genre' like.genre %}">
+                                        <span class="genre-tag">{{ like.genre }}</span>
+                                    </a>
                                 </div>
                             </div>
                         </a>
@@ -43,11 +45,12 @@
 
         {#    추천작(5개) ////////////////#}
         <div class="hr_text">추천작</div>
-        <hr>
-        {% for data in datas %}
-            <a href="{% url 'book_info' data.id %}">
-                <div class="profile_group">
-                    <div class="profile_group">
+        <hr class="main_hr">
+        <div class="profile_group">
+            <div class="profile_group">
+                {% for data in datas %}
+                    <a href="{% url 'book_info' data.id %}">
+
                         <div class="profile_box">
                             <div class="main_cover_image" style="background-image: url({{ data.cover }})"></div>
                             <div>
@@ -56,9 +59,6 @@
                                 </div>
                                 <div class="writer">
                                     {{ data.author }}
-                                </div>
-                                <div class="genre">
-                                    {{ data.genre }}
                                 </div>
                                 <div class="star-ratings" style="margin: auto">
                                     <div
@@ -71,18 +71,24 @@
                                         <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
                                     </div>
                                 </div>
+                                <div class="genre">
+                                    <a href="{% url 'genre' data.genre %}">
+                                        <span class="genre-tag">{{ data.genre }}</span>
+                                    </a>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                </div>
-            </a>
-        {% endfor %}
+
+                    </a>
+                {% endfor %}
+            </div>
+        </div>
     </div>
 
     {#    Today best top 20 ///////////#}
     <div style="margin-top: 30px">
-        <div class="best_hr_text">Today best top 20</div>
-        <hr>
+        <div class="hr_text">Today best top 20</div>
+        <hr class="main_hr">
         <div class="profile_group">
             <div class="best_profile_group">
                 {% for book in li_list %}
