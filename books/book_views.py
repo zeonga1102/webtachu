@@ -5,7 +5,6 @@ from collections import Counter
 from .models import BookModel
 from users.models import ReviewModel
 
-from django.db.models import Count, Avg
 
 stopwords = ['접기', '더보기', '아', '휴', '아이구', '아이쿠', '아이고', '어', '나', '우리', '저희', '따라', '의해', '을', '를',
              '에', '의', '가', '으로', '로', '에게', '뿐이다', '의거하여', '근거하여', '입각하여', '기준으로', '예하면', '예를',
@@ -96,10 +95,6 @@ def detail_view(request, id):
     is_favorite = user.favorite.filter(id=id)
 
     review_info = {'reviews': reviews, 'count': reviews.count()}
-
-    # star = reviews.annotate(reviews_count=Count('book_id')).annotate(star_avg=Avg('book_id__star'))
-    #
-    # print(star.values()[0]['star_avg'])
 
     return render(request, 'detail.html', {'book_info': book_info, 'review_info': review_info, 'is_favorite': is_favorite})
 
