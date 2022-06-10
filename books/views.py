@@ -124,6 +124,25 @@ def modify_review(request, book_id, review_id):
         return redirect('book_info', book_id)
 
 
+def search(request, title):
+    print(title)
+    result = BookModel.objects.filter(title__icontains=title)
+    print(result)
+    page = request.GET.get('page', 1)
+    paginator = Paginator(result, 10)
+    pages = paginator.page(page)
+
+    for page in pages:
+        page.star = page.star * 20
+
+    result_info = {
+        'pages': pages,
+        'name': f"'{title}'의 검색 결과",
+        'books_list_num': result.count(),
+    }
+    return render(request, 'main_genre/genre.html', {'book_all': result_info})
+
+
 def get_today_20():
     url = 'https://series.naver.com/novel/top100List.series?rankingTypeCode=DAILY&categoryCode=ALL'
 

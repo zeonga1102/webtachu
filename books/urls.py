@@ -14,4 +14,6 @@ urlpatterns = [
     path('<int:book_id>/review/create/', views.create_review, name='create_review'),
     path('<int:book_id>/review/delete/<int:review_id>', views.delete_review, name='delete_review'),
     path('<int:book_id>/review/modify/<int:review_id>', views.modify_review, name='modify_review'),
+    
+    path('search/<str:title>', views.search, name='search'),
 ]
