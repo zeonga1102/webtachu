@@ -18,8 +18,9 @@ def genre_view(request, name):
     page = request.GET.get('page', 1)
     paginator = Paginator(books_list, 10)
     pages = paginator.page(page)
-    for book in books_list:
-        book.star = book.star * 20
+
+    for page in pages:
+        page.star = page.star * 20
 
     book_all ={
         'pages' : pages,
