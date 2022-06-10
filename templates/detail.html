@@ -83,7 +83,7 @@
                     {% if review.user == user %}
                         <div style="float: right">
                             <button id="floating_modal_button" class="btn-01 floating-btn" data-bs-toggle="modal"
-                                    data-bs-target="#modify_modal">수정
+                                    data-bs-target="#modify{{ review.id }}">수정
                             </button>
                             <a href="{% url 'delete_review' book_id=review.book.id review_id=review.id %}">
                                 <span class="btn-01">삭제</span>
@@ -92,12 +92,12 @@
                     {% endif %}
                 </div>
                 <!-- # modify_modal -->
-                <div class="modal fade" id="modify_modal" tabindex="-1" role="dialog" aria-labelledby="modify_modal"
+                <div class="modal fade" id="modify{{ review.id }}" tabindex="-1" role="dialog" aria-labelledby="modify_modal"
                      aria-hidden="true">
                     <div class="modal-dialog modal-dialog-centered">
                         <div class="modal-content">
                             <div class="modal-header" style="border: none">
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"
+                                <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close"
                                         style="background-color: transparent; border: none;">
                                     <span aria-hidden="true" style="font-weight: bold">&times;</span>
                                 </button>
@@ -109,16 +109,16 @@
                                 <div class="modal-body">
                                     <div class="star-rating-wrap">
                                         <div class="star-rating space-x">
-                                            <input type="radio" id="5-stars-m" name="rating" value="5" v-model="ratings"/>
-                                            <label for="5-stars-m" class="star pr-4">★</label>
+                                            <input type="radio" id="5-stars-{{ review.id }}" name="rating" value="5" v-model="ratings"/>
+                                            <label for="5-stars-{{ review.id }}" class="star pr-4">★</label>
                                             <input type="radio" id="4-stars-m" name="rating" value="4" v-model="ratings"/>
-                                            <label for="4-stars-m" class="star">★</label>
-                                            <input type="radio" id="3-stars-m" name="rating" value="3" v-model="ratings"/>
-                                            <label for="3-stars-m" class="star">★</label>
-                                            <input type="radio" id="2-stars-m" name="rating" value="2" v-model="ratings"/>
-                                            <label for="2-stars-m" class="star">★</label>
-                                            <input type="radio" id="1-star-m" name="rating" value="1" v-model="ratings"/>
-                                            <label for="1-star-m" class="star">★</label>
+                                            <label for="4-stars-{{ review.id }}" class="star">★</label>
+                                            <input type="radio" id="3-stars-{{ review.id }}" name="rating" value="3" v-model="ratings"/>
+                                            <label for="3-stars-{{ review.id }}" class="star">★</label>
+                                            <input type="radio" id="2-stars-{{ review.id }}" name="rating" value="2" v-model="ratings"/>
+                                            <label for="2-stars-{{ review.id }}" class="star">★</label>
+                                            <input type="radio" id="1-star-{{ review.id }}" name="rating" value="1" v-model="ratings"/>
+                                            <label for="1-star-{{ review.id }}" class="star">★</label>
                                         </div>
                                     </div>
                                     <textarea class="modal-writing-box" name=review
@@ -141,7 +141,7 @@
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-header" style="border: none">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"
+                    <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close"
                             style="background-color: transparent; border: none;">
                         <span aria-hidden="true" style="font-weight: bold">&times;</span>
                     </button>
