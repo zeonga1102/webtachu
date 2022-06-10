@@ -83,53 +83,13 @@
                     {% if review.user == user %}
                         <div style="float: right">
                             <button id="floating_modal_button" class="btn-01 floating-btn" data-bs-toggle="modal"
-                                    data-bs-target="#modify_modal">수정
+                                    data-bs-target="#modify_modal" onclick="click_modify_button('{{ review.desc}}', {{ book_info.book.id }}, {{ review.id }})">수정
                             </button>
                             <a href="{% url 'delete_review' book_id=review.book.id review_id=review.id %}">
                                 <span class="btn-01">삭제</span>
                             </a>
                         </div>
                     {% endif %}
-                </div>
-                <!-- # modify_modal -->
-                <div class="modal fade" id="modify_modal" tabindex="-1" role="dialog" aria-labelledby="modify_modal"
-                     aria-hidden="true">
-                    <div class="modal-dialog modal-dialog-centered">
-                        <div class="modal-content">
-                            <div class="modal-header" style="border: none">
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"
-                                        style="background-color: transparent; border: none;">
-                                    <span aria-hidden="true" style="font-weight: bold">&times;</span>
-                                </button>
-                            </div>
-                            <h4 class="modal-title" id="modify_modal_title">
-                                <b>리뷰 수정하기</b></h4>
-                            <form method="POST" action="{% url 'modify_review' book_info.book.id review.id%}">
-                                {% csrf_token %}
-                                <div class="modal-body">
-                                    <div class="star-rating-wrap">
-                                        <div class="star-rating space-x">
-                                            <input type="radio" id="5-stars-m" name="rating" value="5" v-model="ratings"/>
-                                            <label for="5-stars-m" class="star pr-4">★</label>
-                                            <input type="radio" id="4-stars-m" name="rating" value="4" v-model="ratings"/>
-                                            <label for="4-stars-m" class="star">★</label>
-                                            <input type="radio" id="3-stars-m" name="rating" value="3" v-model="ratings"/>
-                                            <label for="3-stars-m" class="star">★</label>
-                                            <input type="radio" id="2-stars-m" name="rating" value="2" v-model="ratings"/>
-                                            <label for="2-stars-m" class="star">★</label>
-                                            <input type="radio" id="1-star-m" name="rating" value="1" v-model="ratings"/>
-                                            <label for="1-star-m" class="star">★</label>
-                                        </div>
-                                    </div>
-                                    <textarea class="modal-writing-box" name=review
-                                              placeholder="리뷰를 작성해주세요">{{ review.desc }}</textarea>
-                                </div>
-                                <div class="modal-footer" style="border: none">
-                                    <button type="submit" class="review-submit" align="center">리뷰 등록</button>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
                 </div>
             {% endfor %}
         </div>
@@ -166,6 +126,47 @@
                             </div>
                         </div>
                         <textarea class="modal-writing-box" name=review placeholder="리뷰를 작성해주세요"></textarea>
+                    </div>
+                    <div class="modal-footer" style="border: none">
+                        <button type="submit" class="review-submit" align="center">리뷰 등록</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- # modify_modal -->
+    <div class="modal fade" id="modify_modal" tabindex="-1" role="dialog" aria-labelledby="modify_modal"
+         aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header" style="border: none">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"
+                            style="background-color: transparent; border: none;">
+                        <span aria-hidden="true" style="font-weight: bold">&times;</span>
+                    </button>
+                </div>
+                <h4 class="modal-title" id="modify_modal_title">
+                    <b>리뷰 수정하기</b></h4>
+                <form id="modify_modal_inner" method="POST" action="">
+                    {% csrf_token %}
+                    <div class="modal-body">
+                        <div class="star-rating-wrap">
+                            <div class="star-rating space-x">
+                                <input type="radio" id="5-stars-m" name="rating" value="5" v-model="ratings"/>
+                                <label for="5-stars-m" class="star pr-4">★</label>
+                                <input type="radio" id="4-stars-m" name="rating" value="4" v-model="ratings"/>
+                                <label for="4-stars-m" class="star">★</label>
+                                <input type="radio" id="3-stars-m" name="rating" value="3" v-model="ratings"/>
+                                <label for="3-stars-m" class="star">★</label>
+                                <input type="radio" id="2-stars-m" name="rating" value="2" v-model="ratings"/>
+                                <label for="2-stars-m" class="star">★</label>
+                                <input type="radio" id="1-star-m" name="rating" value="1" v-model="ratings"/>
+                                <label for="1-star-m" class="star">★</label>
+                            </div>
+                        </div>
+                        <textarea class="modal-writing-box" name=review
+                                  placeholder="리뷰를 작성해주세요" id="modify_desc"></textarea>
                     </div>
                     <div class="modal-footer" style="border: none">
                         <button type="submit" class="review-submit" align="center">리뷰 등록</button>
