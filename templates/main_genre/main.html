@@ -42,38 +42,41 @@
     <div style="margin-top: 30px">
 
         {#    추천작(5개) ////////////////#}
-        <div class="hr_text">추천작(5개)</div>
+        <div class="hr_text">추천작</div>
         <hr>
-        <div class="profile_group">
-            <div class="profile_group">
-                <div class="profile_box">
-                    <div class="cover_image"></div>
-                    <div>
-                        <div class="title_font" style="text-align: center">
-                            조선전력공사
-                        </div>
-                        <div class="writer">
-                            작가명
-                        </div>
-                        <div class="genre">
-                            장르
-                        </div>
-                        <div class="star-ratings" style="margin: auto">
-                            <div
-                                    class="star-ratings-fill space-x-2 text-lg"
-                                    :style="{ width: ratingToPercent + '%' }"
-                            >
-                                <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
-                            </div>
-                            <div class="star-ratings-base space-x-2 text-lg">
-                                <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+        {% for data in datas %}
+            <a href="{% url 'book_info' data.id %}">
+                <div class="profile_group">
+                    <div class="profile_group">
+                        <div class="profile_box">
+                            <div class="main_cover_image" style="background-image: url({{ data.cover }})"></div>
+                            <div>
+                                <div class="title_font" style="text-align: center">
+                                    {{ data.title }}
+                                </div>
+                                <div class="writer">
+                                    {{ data.author }}
+                                </div>
+                                <div class="genre">
+                                    {{ data.genre }}
+                                </div>
+                                <div class="star-ratings" style="margin: auto">
+                                    <div
+                                            class="star-ratings-fill space-x-2 text-lg"
+                                            :style="{ width: ratingToPercent + '%' }"
+                                    >
+                                        <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+                                    </div>
+                                    <div class="star-ratings-base space-x-2 text-lg">
+                                        <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-
-            </div>
-        </div>
+            </a>
+        {% endfor %}
     </div>
 
     {#    Today best top 20 ///////////#}
@@ -92,7 +95,7 @@
                                 <div class="genre">{{ book.genre }}</div>
                                 <div class="writer">{{ book.author }} | {{ book.detail }}</div>
                                 <div class="star-wrap mb10" style="justify-content: center">
-                                    <div class="star-ratings" >
+                                    <div class="star-ratings">
                                         <div class="star-ratings-fill space-x" style="width: {{ book.star_width }}%">
                                             <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
                                         </div>
