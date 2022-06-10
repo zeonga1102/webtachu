@@ -80,7 +80,7 @@ stopwords = ['접기', '더보기', '아', '휴', '아이구', '아이쿠', '아
 
 def detail_view(request, id):
     book = BookModel.objects.get(id=id)
-    reviews = ReviewModel.objects.filter(book=book)
+    reviews = ReviewModel.objects.filter(book=book).order_by('-date')
 
     star_width = book.star * 20 - 2.3
     if star_width < 0:

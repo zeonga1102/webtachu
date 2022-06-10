@@ -50,8 +50,6 @@ def create_review(request, book_id):
         current_book.star = new_avg
         current_book.save()
 
-        modify_review = False
-
         return redirect('book_info', book_id)
 
 
@@ -72,6 +70,20 @@ def delete_review(request, book_id, review_id):
     return redirect('book_info', book_id)
 
 
+@login_required
+def modify_review(request, book_id, review_id):
+    origin_review = ReviewModel.objects.filter(id=review_id)
+
+    if request.method == "POST":
+        star = int(request.POST.get('rating', 0))
+        review = request.POST.get('review', '')
+        date = timezone.now()
+
+        origin_review.update(star=star, desc=review, date=date)
+
+        return redirect('book_info', book_id)
+
+
 def get_today_20():
     url = 'https://series.naver.com/novel/top100List.series?rankingTypeCode=DAILY&categoryCode=ALL'
 
@@ -84,8 +96,10 @@ def get_today_20():
     li_list = []
 
     for li in lis:
+        url = 'https://series.naver.com' + li.select_one('a')['href']
         cover_line = li.select_one('a > img')
-        cover = cover_line['src']
+        cover_m79 = cover_line['src']
+        cover_m260 = cover_m79.replace("type=m79", "type=m260")
         title = cover_line['alt']
         author = li.select_one('div.comic_cont > p.info > span:nth-child(4)').text
         star = li.select_one('div.comic_cont > p.info > em.score_num').text
@@ -93,7 +107,7 @@ def get_today_20():
 
         star_width = float(star) * 10
 
-        dic = {'cover':cover, 'title':title, 'author':author, 'author':author, 'star':star, 'star_width':star_width, 'detail':detail}
+        dic = {'url':url, 'cover':cover_m260, 'title':title, 'author':author, 'author':author, 'star':star, 'star_width':star_width, 'detail':detail}
 
         li_list.append(dic)
 
