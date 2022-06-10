@@ -44,12 +44,12 @@ hr {
     height: 30px;
 }
 
-.cover_image {
+.genre_cover_image {
     width: 100px;
     margin-right: 20px;
 }
 
-.cover_image > img {
+.genre_cover_image > img {
     width: 100px;
 }
 
