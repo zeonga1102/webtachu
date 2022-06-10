@@ -42,7 +42,7 @@ def main_view(request):
 
     stocks_length = len(stocks)
     if stocks_length > 5:
-        stocks_length == 5
+        stocks_length = 5
 
     favorite = []
     for i in range(stocks_length):
@@ -55,11 +55,15 @@ def main_view(request):
     favorite_all = user.favorite.all()
     keyword = make_keyword(favorite_all, 'story', 20)
     keyword_vec = model.infer_vector(keyword)
-    most_similar = model.docvecs.most_similar([keyword_vec], topn=5)
+    most_similar = model.docvecs.most_similar([keyword_vec], topn=favorite_all.count()+5)
 
     datas = []
     for index, similarity in most_similar:
-        datas.append(BookModel.objects.get(id=index+1))
+        recommend = BookModel.objects.get(id=index+1)
+        if not recommend in favorite_all:
+            datas.append(recommend)
+        if len(datas) == 5:
+            break
 
     for book in datas:
         book.star = book.star * 20
@@ -118,6 +122,25 @@ def modify_review(request, book_id, review_id):
         origin_review.update(star=star, desc=review, date=date)
 
         return redirect('book_info', book_id)
+
+
+def search(request, title):
+    print(title)
+    result = BookModel.objects.filter(title__icontains=title)
+    print(result)
+    page = request.GET.get('page', 1)
+    paginator = Paginator(result, 10)
+    pages = paginator.page(page)
+
+    for page in pages:
+        page.star = page.star * 20
+
+    result_info = {
+        'pages': pages,
+        'name': f"'{title}'의 검색 결과",
+        'books_list_num': result.count(),
+    }
+    return render(request, 'main_genre/genre.html', {'book_all': result_info})
 
 
 def get_today_20():

@@ -76,6 +76,13 @@
                     <a class="nav-link" href="{% url 'genre' '무협' %}">무협</a>
                 </li>
 
+                <li>
+                    <a id="search">
+                        <input id="search_text" type="text">
+                        <button onclick="click_search_button()">검색</button>
+                    </a>
+               </li>
+
             </ul>
             <div class="userinfo mb-2 mb-md-0">
                 <a href="{% url 'mypage' %}"><b>{{ user.first_name }}</b></a>님
@@ -84,6 +91,13 @@
         </div>
     </div>
 </nav>
+
+<script>
+    function click_search_button() {
+        text = document.getElementById('search_text').value
+        document.getElementById('search').setAttribute('href', `/book/search/${text}`)
+    }
+</script>
 
 {% block content %}
 {% endblock %}
