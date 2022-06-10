@@ -74,6 +74,10 @@ def mypage(request):
         result = cursor.execute(query)
         stocks = cursor.fetchall()
 
+        stocks_length = len(stocks)
+        if stocks_length > 5:
+            stocks_length == 5
+
         origin_stocks = stocks
         stocks.sort(key=lambda x: -x[0])
 
@@ -81,13 +85,13 @@ def mypage(request):
         favorite_data = user.favorite.all()
 
         favorite = []
-        for i in range(5):
+        for i in range(stocks_length):
             favorite.append(user.favorite.get(id=stocks[i][2]))
         reviews = review_data[::-1][:3]
 
         fav_cnt = len(origin_stocks)
         review_cnt = review_data.count()
-        count = {'fav':fav_cnt, 'rev':review_cnt}
+        count = {'fav': fav_cnt, 'rev': review_cnt}
 
         keyword = make_keyword(favorite_data, 'story', 10)
         print(keyword)
