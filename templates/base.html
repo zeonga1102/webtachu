@@ -14,6 +14,32 @@
     <link href="{% static 'css/mypage.css' %}" rel="stylesheet">
     <link href="{% static 'css/detail.css' %}" rel="stylesheet">
 
+    <script>
+        //Get the button:
+        mybutton = document.getElementById("myBtn");
+
+        // When the user scrolls down 20px from the top of the document, show the button
+        window.onscroll = function () {
+            scrollFunction()
+        };
+
+        function scrollFunction() {
+            if (document.body.scrollTop > 200 || document.documentElement.scrollTop > 200) {
+                {#mybutton.style.display = "block";#}
+                $('#myBtn').fadeIn();
+            } else {
+                $('#myBtn').fadeOut();
+            }
+        }
+
+        // When the user clicks on the button, scroll to the top of the document
+        function topFunction() {
+            document.body.scrollTop = 0; // For Safari
+            document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
+        }
+
+    </script>
+
 </head>
 <body>
 <nav class="navbar navbar-expand-md">
@@ -56,7 +82,9 @@
         </div>
     </div>
 </nav>
+
 {% block content %}
 {% endblock %}
+ <button onclick="topFunction()" id="myBtn" title="Go to top"><img src="{% static 'img/topbutton.png' %}" id="topButtonImg"></button>
 </body>
 </html>

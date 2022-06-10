@@ -13,13 +13,15 @@ from .book_views import make_keyword
 model = Doc2Vec.load('model.doc2vec')
 
 
+
 def genre_view(request, name):
     books_list = BookModel.objects.filter(genre=name)
     page = request.GET.get('page', 1)
     paginator = Paginator(books_list, 10)
     pages = paginator.page(page)
-    for book in books_list:
-        book.star = book.star * 20
+
+    for page in pages:
+        page.star = page.star * 20
 
     book_all ={
         'pages' : pages,
@@ -40,10 +42,14 @@ def main_view(request):
     keyword = make_keyword(favorite, 'story', 20)
     keyword_vec = model.infer_vector(keyword)
     most_similar = model.docvecs.most_similar([keyword_vec], topn=5)
-    for index, similarity in most_similar:
-        print(BookModel.objects.get(id=index+1).title)
 
-    return render(request, 'main_genre/main.html', {'likes': likes, 'li_list':li_list})
+    datas = []
+    for index, similarity in most_similar:
+        datas.append(BookModel.objects.get(id=index+1))
+        print(BookModel.objects.get(id=index+1).cover)
+
+
+    return render(request, 'main_genre/main.html', {'likes': likes, 'li_list':li_list, 'datas': datas})
 
 
 @login_required
