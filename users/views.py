@@ -76,7 +76,7 @@ def mypage(request):
 
         stocks_length = len(stocks)
         if stocks_length > 5:
-            stocks_length == 5
+            stocks_length = 5
 
         origin_stocks = stocks
         stocks.sort(key=lambda x: -x[0])

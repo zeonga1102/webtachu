@@ -43,7 +43,7 @@ def main_view(request):
 
     stocks_length = len(stocks)
     if stocks_length > 5:
-        stocks_length == 5
+        stocks_length = 5
 
     favorite = []
     for i in range(stocks_length):
