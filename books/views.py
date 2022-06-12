@@ -120,11 +120,19 @@ def delete_review(request, book_id, review_id):
 @login_required
 def modify_review(request, book_id, review_id):
     origin_review = ReviewModel.objects.filter(id=review_id)
+    print(origin_review[0].star)
 
     if request.method == "POST":
         star = int(request.POST.get('rating', 0))
         review = request.POST.get('review', '')
         date = timezone.now()
+
+        current_book = BookModel.objects.get(id=book_id)
+        review_count = ReviewModel.objects.filter(book=current_book).count()
+        new_avg = (current_book.star * review_count - origin_review[0].star + star) / review_count
+        new_avg = round(new_avg, 1)
+        current_book.star = new_avg
+        current_book.save()
 
         origin_review.update(star=star, desc=review, date=date)
 
