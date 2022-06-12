@@ -89,6 +89,7 @@ def create_review(request, book_id):
         ReviewModel.objects.create(user=user, book=current_book, star=star, desc=review)
 
         new_avg = (current_book.star * review_count + star) / (review_count + 1)
+        new_avg = round(new_avg, 1)
         current_book.star = new_avg
         current_book.save()
 
@@ -109,6 +110,7 @@ def delete_review(request, book_id, review_id):
         new_avg = 0
     else:
         new_avg = (current_book.star * review_count - star) / (review_count - 1)
+        new_avg = round(new_avg, 1)
     current_book.star = new_avg
     current_book.save()
 
