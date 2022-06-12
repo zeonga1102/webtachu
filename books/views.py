@@ -178,7 +178,7 @@ def get_today_20():
         star = li.select_one('div.comic_cont > p.info > em.score_num').text
         detail = li.select_one('div.comic_cont > p.info > span:nth-child(6)').text
 
-        star_width = float(star) * 10
+        star_width = float(star) * 10 - 2.3
 
         dic = {'url': url, 'cover': cover_m260, 'title': title, 'author': author, 'author': author, 'star': star,
                'star_width': star_width, 'detail': detail}
