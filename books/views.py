@@ -52,14 +52,14 @@ def main_view(request):
     li_list = get_today_20()
 
     favorite_all = user.favorite.all()
-    print(favorite_all, "선호작 개수")
 
     datas = []
     if len(favorite_all) == 0:
-        print("선호작 없음")
+        books = BookModel.objects.all().order_by('-star')[:5]
+        for book in books:
+            datas.append(book)
 
     else:
-        print(datas, "선호작있음")
         keyword = make_keyword(favorite_all, 'story', 20)
         keyword_vec = model.infer_vector(keyword)
         most_similar = model.docvecs.most_similar([keyword_vec], topn=favorite_all.count() + 5)
@@ -69,7 +69,6 @@ def main_view(request):
                 datas.append(recommend)
             if len(datas) == 5:
                 break
-
 
     for book in datas:
         book.star = book.star * 20
