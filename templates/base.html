@@ -58,8 +58,8 @@
             </ul>
         </div>
         <div class="userinfo">
-            <a href="{% url 'mypage' %}"><b>{{ user.first_name }}</b></a>님
-            <a href="/logout"><i class="bi bi-x-circle"></i></a>
+            <a href="{% url 'mypage' %}"><i class="bi bi-person-circle"></i> <b>{{ user.first_name }}</b></a> 님
+            <a href="/logout"><i style="color: #aaa9a9;" class="bi bi-x-circle"></i></a>
         </div>
     </div>
 </nav>
