@@ -59,7 +59,9 @@ def main_view(request):
             datas.append(book)
 
     else:
+        title_keyword = make_keyword(favorite_all, 'title', 3) * 3
         keyword = make_keyword(favorite_all, 'story', 20)
+        keyword += title_keyword
         keyword_vec = model.infer_vector(keyword)
         most_similar = model.docvecs.most_similar([keyword_vec], topn=favorite_all.count() + 5)
         for index, similarity in most_similar:
