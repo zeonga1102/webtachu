@@ -5,16 +5,15 @@
 {% endblock %}
 
 {% block content %}
-    <div class="main_box main_border">
-        <div class="title_text">
-            {{ book_all.name }}
-        </div>
+    <div class="main_box">
+        <div class="title_text">{{ book_all.name }}</div>
+        <hr class="title_hr">
         <div class="count_box">
             총 {{ book_all.books_list_num }}개의 작품
         </div>
         {% for page in book_all.pages %}
             <a href="{% url 'book_info' page.id %}">
-                <div class="content_box display_flex" style="margin: auto">
+                <div class="content_box display_flex" style="margin: auto auto 30px auto">
                     <div class="genre_cover_image"><img src="{{ page.cover }}"></div>
                     <div>
                         <div class="title_font" style="margin-bottom: 10px">
@@ -38,7 +37,7 @@
                     </div>
                 </div>
             </a>
-            <hr>
+{#            <hr class="genre_hr">#}
         {% endfor %}
 
         <div style="text-align: center">
