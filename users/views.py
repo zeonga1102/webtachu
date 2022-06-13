@@ -71,7 +71,7 @@ def mypage(request):
 
         user_id = user.id
         cursor = connection.cursor()
-        query = "SELECT * FROM users_favorite WHERE usermodel_id=%s" % (user_id)
+        query = "SELECT * FROM users_favorite WHERE usermodel_id=%s" % user_id
         cursor.execute(query)
         stocks = cursor.fetchall()
 
