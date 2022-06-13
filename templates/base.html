@@ -41,65 +41,115 @@
         }
 
 
-
     </script>
 
 </head>
 <body>
-<nav class="navbar navbar-expand-lg">
-    <div class="container-fluid">
-        <a class="navbar-brand me-3" href="/">
-            <img
-                    src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FID3cA%2FbtrDWLx7q9M%2FUxcX4oK5QuiiBktX9ipkL1%2Fimg.png"
-                    width="120px" alt="웹소설 일타강사 에이아이의 기막힌 추천 로고 이미지">
+<nav class="container-fluid">
+    <div class="logo">
+        <a href="/">
+            <img src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FID3cA%2FbtrDWLx7q9M%2FUxcX4oK5QuiiBktX9ipkL1%2Fimg.png"
+                 width="120px" alt="웹소설 일타강사 에이아이의 기막힌 추천 로고 이미지">
         </a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav me-auto mb-3 mb-md-0">
-                <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="{% url 'main' %}">메인</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{% url 'genre' '로맨스' %}">로맨스</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{% url 'genre' '판타지' %}">판타지</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{% url 'genre' '로판' %}">로맨스판타지</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{% url 'genre' '현판' %}">현대판타지</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{% url 'genre' '무협' %}">무협</a>
-                </li>
-            </ul>
-            <a id="search">
-                <div class="input-group input-group-sm mb-md-0 d-flex w-75">
-                    <input type="text" class="form-control" id="search_text" type="text" placeholder="Search"
-                           aria-label="Search" aria-describedby="button-addon2">
-                    <button class="btn btn-outline-success me-3" type="button" id="button-addon2"
-                            onclick="click_search_button()">Search
-                    </button>
-
-                </div>
-            </a>
-            <div class="userinfo mb-2 mb-md-0">
-                <a href="{% url 'mypage' %}"><b>{{ user.first_name }}</b></a>님
-                <a href="/logout"><i class="bi bi-x-circle"></i></a>
-            </div>
+    </div>
+    <a id="search">
+        <div class="search input-group input-group-sm ms-auto me-auto p-3">
+            <input type="text" class="form-control shadow-none" id="search_text" type="text"
+                   placeholder="Search"
+                   aria-label="Search" aria-describedby="button-addon2">
+            <button class="btn btn-outline-success me-3 shadow-none" type="button" id="button-addon2"
+                    onclick="click_search_button()">Search
+            </button>
         </div>
+    </a>
+    <div class="nav justify-content-center">
+        <ul class="nav">
+            <li class="nav-item">
+                <a class="nav-link active link-dark" aria-current="page" href="{% url 'main' %}">메인</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link link-secondary" href="{% url 'genre' '로맨스' %}">로맨스</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link link-secondary" href="{% url 'genre' '판타지' %}">판타지</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link link-secondary" href="{% url 'genre' '로판' %}">로맨스판타지</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link link-secondary" href="{% url 'genre' '현판' %}">현대판타지</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link link-secondary" href="{% url 'genre' '무협' %}">무협</a>
+            </li>
+        </ul>
+
+    </div>
+    <div class="userinfo">
+        <a href="{% url 'mypage' %}"><b>{{ user.first_name }}</b></a>님
+        <a href="/logout"><i class="bi bi-x-circle"></i></a>
     </div>
 </nav>
+
+{#<nav class="navbar navbar-expand-xl">#}
+{#    <div class="container-fluid">#}
+{#        <button class="navbar-toggler ms-5" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"#}
+{#                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">#}
+{#            <span class="navbar-toggler-icon"></span>#}
+{#        </button>#}
+{#        <div class="navbar-brand ms-5">#}
+{#            <a href="/">#}
+{#                <img#}
+{#                        src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FID3cA%2FbtrDWLx7q9M%2FUxcX4oK5QuiiBktX9ipkL1%2Fimg.png"#}
+{#                        width="120px" alt="웹소설 일타강사 에이아이의 기막힌 추천 로고 이미지">#}
+{#            </a>#}
+{##}
+{#        </div>#}
+{#        <div class="collapse navbar-collapse" id="navbarNav">#}
+{#            <div class="container-sm d-flex justify-content-evenly">#}
+{#                <ul class="navbar-nav p-1">#}
+{#                    <li class="nav-item">#}
+{#                        <a class="nav-link active" aria-current="page" href="{% url 'main' %}">메인</a>#}
+{#                    </li>#}
+{#                    <li class="nav-item">#}
+{#                        <a class="nav-link" href="{% url 'genre' '로맨스' %}">로맨스</a>#}
+{#                    </li>#}
+{#                    <li class="nav-item">#}
+{#                        <a class="nav-link" href="{% url 'genre' '판타지' %}">판타지</a>#}
+{#                    </li>#}
+{#                    <li class="nav-item">#}
+{#                        <a class="nav-link" href="{% url 'genre' '로판' %}">로맨스판타지</a>#}
+{#                    </li>#}
+{#                    <li class="nav-item">#}
+{#                        <a class="nav-link" href="{% url 'genre' '현판' %}">현대판타지</a>#}
+{#                    </li>#}
+{#                    <li class="nav-item">#}
+{#                        <a class="nav-link" href="{% url 'genre' '무협' %}">무협</a>#}
+{#                    </li>#}
+{#                </ul>#}
+{#                <a id="search">#}
+{#                    <div class="input-group input-group-sm ms-auto me-auto p-2 w-75">#}
+{#                        <input type="text" class="form-control shadow-none" id="search_text" type="text" placeholder="Search"#}
+{#                               aria-label="Search" aria-describedby="button-addon2">#}
+{#                        <button class="btn btn-outline-success me-3 shadow-none" type="button" id="button-addon2"#}
+{#                                onclick="click_search_button()">Search#}
+{#                        </button>#}
+{#                    </div>#}
+{#                </a>#}
+{#            </div>#}
+{#        </div>#}
+{#        <div class="userinfo mb-2 p-2 me-5">#}
+{#            <a href="{% url 'mypage' %}"><b>{{ user.first_name }}</b></a>님#}
+{#            <a href="/logout"><i class="bi bi-x-circle"></i></a>#}
+{#        </div>#}
+{#    </div>#}
+{#</nav>#}
+
 
 <script>
     function click_search_button() {
         let text = document.getElementById('search_text').value
-        if(text.length > 0)
+        if (text.length > 0)
             document.getElementById('search').setAttribute('href', `/book/search/${text}`)
     }
 </script>
