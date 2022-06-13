@@ -6,6 +6,7 @@ import requests
 from bs4 import BeautifulSoup
 from gensim.models.doc2vec import Doc2Vec
 from .book_views import make_keyword
+from users.views import query_favorite
 
 
 model = Doc2Vec.load('model.doc2vec')
@@ -31,22 +32,7 @@ def genre_view(request, name):
 def main_view(request):
     user = request.user
 
-    cursor = connection.cursor()
-    query = "SELECT * FROM users_favorite WHERE usermodel_id=%s" % user.id
-    cursor.execute(query)
-    stocks = cursor.fetchall()
-
-    stocks_length = len(stocks)
-    if stocks_length > 5:
-        stocks_length = 5
-
-    stocks.sort(key=lambda x: -x[0])
-
-    favorite = []
-    for i in range(stocks_length):
-        fav = user.favorite.get(id=stocks[i][2])
-        fav.star = fav.star * 20
-        favorite.append(fav)
+    favorite = query_favorite(user)
 
     li_list = get_today_20()
 
