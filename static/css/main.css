@@ -52,13 +52,15 @@ body {
 }
 
 .profile_group {
+    width: 1200px;
     display: flex;
     margin: auto;
+
 }
 
 .profile_box {
     width: 185px;
-    margin: 20px 20px 20px 20px;
+    margin: 20px 27px 20px 27px;
 }
 
 .best_profile_box {
