@@ -43,11 +43,13 @@
         <div style="text-align: center">
             {% if book_all.pages.has_previous %}
                 <a href='?page={{ book_all.pages.number|add:-1 }}'>Previous</a>
+                <a href='?page={{ book_all.pages.previous_page_number }}'>{{ book_all.pages.previous_page_number }}</a>
             {% endif %}
 
-            Page {{ book_all.pages.number }} of {{ book_all.pages.paginator.num_pages }}
+            <strong>{{ book_all.pages.number }} of {{ book_all.pages.paginator.num_pages }}</strong>
 
             {% if book_all.pages.has_next %}
+                <a href='?page={{ book_all.pages.next_page_number }}'>{{ book_all.pages.next_page_number }}</a>
                 <a href='?page={{ book_all.pages.number|add:+1 }}'>Next</a>
             {% endif %}
         </div>
