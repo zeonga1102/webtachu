@@ -13,8 +13,13 @@ body{
 }
 
 .title_hr{
-    border: 2px solid #6DDB94;
     margin-top: 2px;
+    height: 2px;
+    border: 0;
+    background:
+    linear-gradient(to left, rgba(176,255,255,.8), rgba(176,255,255,0) 70.71%),
+    linear-gradient(to right, rgba(255, 206, 229, .8), rgba(255, 206, 229, 0) 70.71%);
+    opacity: initial;
 }
 
 .title_font {
