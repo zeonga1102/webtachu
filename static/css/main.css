@@ -106,3 +106,9 @@ body {
     z-index: 0;
     padding: 0;
 }
+
+.main_like_text{
+    text-align: center;
+    font-size: 20px;
+    font-weight: bold;
+}
