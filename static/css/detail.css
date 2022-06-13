@@ -17,7 +17,7 @@
 
 .btn-01 {
   background-color: transparent;
-  font-size: small;
+  font-size: 16px;
   font-weight: bold;
   width: auto;
   height: auto;
@@ -65,7 +65,7 @@
 }
 
 .keyword-box > span {
-  font-size: small;
+  font-size: 16px;
   border: solid 1px #e796f4;
   word-break: keep-all;
   line-height: 1.5;
@@ -115,7 +115,7 @@
 }
 
 .book-review-desc {
-  font-size: small;
+  font-size: 16px;
   line-height: 150%;
   margin-top: 5px;
 }
@@ -221,7 +221,9 @@
 .modal-writing-box {
   width: 100%;
   height: 300px;
-  border: solid 2px mediumspringgreen;
+  border: solid 2px;
+  border-image: linear-gradient(to right, #b3fcd2, #CBF2DD, #D2D4ED, #ddb1f4);
+  border-image-slice: 1;
   padding: 10px;
   resize: none;
   overflow: auto;
@@ -230,7 +232,7 @@
 .review-submit {
   color: white;
   font-weight: bold;
-  background-color: mediumspringgreen;
+  background-color: #c568f7;
   opacity: 0.7;
   border: none;
   padding: 3px 10px;
