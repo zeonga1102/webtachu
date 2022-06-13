@@ -10,7 +10,7 @@
             <div class="logout">
                 <h3>{{ user.first_name }}님</h3>
                 <h6>{{ user.email }}</h6>
-                <button class="btn btn-success me-md-2 mt-4" type="button" onclick="location.href='/logout'">로그아웃
+                <button class="btn btn-outline-info me-md-2 mt-4" type="button" onclick="location.href='/logout'">로그아웃
                 </button>
             </div>
             <div class="count">
@@ -25,7 +25,7 @@
             </div>
             <div class="favorites-mypage">
                 {% for word in keyword %}
-                    {{ word }}
+                    <div class="fav-keyword"> {{ word }} </div>
                 {% endfor %}
             </div>
         </div>
