@@ -40,17 +40,23 @@
 {#            <hr class="genre_hr">#}
         {% endfor %}
 
-        <div style="text-align: center">
+        <div class="genre-paginator">
             {% if book_all.pages.has_previous %}
-                <a href='?page={{ book_all.pages.number|add:-1 }}'>Previous</a>
+                <a href='?page={{ book_all.pages.number|add:-1 }}'><i style="color: #68d6d7" class="bi bi-caret-left-fill"></i></a>
+                {% if book_all.pages.number|add:-2 > 0 %}
+                    <a href='?page={{ book_all.pages.number|add:-2 }}'>{{ book_all.pages.number|add:-2 }}</a>
+                {% endif %}
                 <a href='?page={{ book_all.pages.previous_page_number }}'>{{ book_all.pages.previous_page_number }}</a>
             {% endif %}
 
-            <strong>{{ book_all.pages.number }} of {{ book_all.pages.paginator.num_pages }}</strong>
+            <a><strong style="color: #f28cf2">{{ book_all.pages.number }}</strong></a>
 
             {% if book_all.pages.has_next %}
                 <a href='?page={{ book_all.pages.next_page_number }}'>{{ book_all.pages.next_page_number }}</a>
-                <a href='?page={{ book_all.pages.number|add:+1 }}'>Next</a>
+                {% if book_all.pages.number|add:2 <= book_all.pages.paginator.num_pages %}
+                    <a href='?page={{ book_all.pages.number|add:2 }}'>{{ book_all.pages.number|add:2 }}</a>
+                {% endif %}
+                <a href='?page={{ book_all.pages.number|add:+1 }}'><i style="color: #68d6d7" class="bi bi-caret-right-fill"></i></a>
             {% endif %}
         </div>
 
