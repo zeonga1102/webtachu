@@ -65,8 +65,6 @@ a:hover {
     padding: 30px 20px;
     border-radius: 10px;
     text-align: center;
-    /*background-color: rgba(176, 255, 255, .3);*/
-    /*border: 1px solid rgba(176, 255, 255, .8);*/
 }
 
 .count {
@@ -74,8 +72,6 @@ a:hover {
     padding: 30px 0;
     border-radius: 30px;
     text-align: center;
-    /*background-color: rgba(176, 255, 255, .3);*/
-    /*border: 1px solid rgba(176, 255, 255, .8);*/
 }
 
 .favorites-mypage {
@@ -83,7 +79,6 @@ a:hover {
     padding: 20px;
     border-radius: 10px;
     text-align: center;
-    /*background-color: white;*/
     display: flex;
     flex-flow: wrap;
 }
