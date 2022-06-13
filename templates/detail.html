@@ -53,7 +53,7 @@
             <b>작품소개</b>
             <p>{{ book_info.book.story|linebreaks }}</p>
         </div>
-        <hr style="border: solid 1px mediumspringgreen; opacity: 100; width:1000px;  margin:auto;">
+        <hr class="detail-hr">
         <div class="review-detail">
             <b>이 책의 리뷰 ({{ review_info.count }}개)</b>
             <button id="floating_modal_button" class="btn-01 floating-btn" data-bs-toggle="modal"
@@ -76,7 +76,7 @@
                         <div class="reviewer">
                             <b>{{ review.user.username }}</b><span>| {{ review.date }}</span>
                         </div>
-                        <div>
+                        <div class="book-review-desc">
                             {{ review.desc|linebreaks }}
                         </div>
                     </div>

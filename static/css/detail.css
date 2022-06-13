@@ -7,13 +7,22 @@
   margin-bottom: 10px;
 }
 
+.detail-hr {
+  margin: 5px auto 10px auto;
+  width: 1000px;
+  height: 2px;
+  border: 0;
+  opacity: initial;
+  background: linear-gradient(to right, #E4F9E6, #CBF2DD, #D2D4ED, #E2D1F5);
+}
+
 .btn-01 {
   background-color: transparent;
   font-size: small;
   font-weight: bold;
   width: auto;
   height: auto;
-  border: solid 1px mediumspringgreen;
+  border: solid 1px #E2D1F5;
   border-radius: 10px;
   line-height: 1.5;
   word-break: keep-all;
@@ -58,7 +67,7 @@
 
 .keyword-box > span {
   font-size: small;
-  border: solid 1px mediumspringgreen;
+  border: solid 1px #E2D1F5;
   word-break: keep-all;
   line-height: 1.5;
   padding: 2px 6px;
@@ -72,11 +81,16 @@
 }
 
 .is-favorite {
-  background-color: mediumspringgreen;
+  background-color: #E2D1F5;
 }
 
 .story {
   margin: 20px 100px;
+  line-height: normal;
+}
+
+.story > p {
+  font-size: small;
 }
 
 .book-reviews {
@@ -85,7 +99,7 @@
 }
 
 .review-detail{
-  margin: 40px 20px 20px 20px;
+  margin: 40px 50px 20px 50px;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -96,10 +110,18 @@
 }
 
 .book-review {
-  width: 1000px;
-  border: solid 2px mediumspringgreen;
+  width: 900px;
+  border: solid 2px;
+  border-image: linear-gradient(to right, #E4F9E6, #CBF2DD, #D2D4ED, #E2D1F5);
+  border-image-slice: 1;
   padding: 20px 20px 45px 20px;
   margin-bottom: 15px;
+}
+
+.book-review-desc {
+  font-size: small;
+  line-height: normal;
+  margin-top: 5px;
 }
 
 .star-wrap {
