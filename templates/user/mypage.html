@@ -71,7 +71,7 @@
                         </a>
                     </div>
                     <div class="review-detail-mypage">
-                        <h4><a href="{% url 'book_info' review.book.id %}">{{ review.book.title }}</a></h4>
+                        <h4><a href="{% url 'book_info' review.book.id %}"><b>{{ review.book.title }}</b></a></h4>
                         <p><a href="{% url 'genre' review.book.genre %}"><span
                                 class="genre-tag">{{ review.book.genre }}</span></a> | <b>글</b> {{ review.book.author }}
                             | <b>출판사</b> {{ review.book.publisher }}</p>
