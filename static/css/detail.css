@@ -1,4 +1,6 @@
-.space-x {  letter-spacing: 5px;  }
+.space-x {
+  font-size: large;
+  letter-spacing: 2px;  }
 
 .mb10 {
   margin-bottom: 10px;
@@ -79,16 +81,12 @@
 }
 
 .is-favorite {
-  background-color: #e796f4;
+  background-color: #f6b7c8;
 }
 
 .story {
   margin: 20px 100px;
-  line-height: normal;
-}
-
-.story > p {
-  font-size: small;
+  line-height: 160%;
 }
 
 .book-reviews {
@@ -118,12 +116,16 @@
 
 .book-review-desc {
   font-size: small;
-  line-height: normal;
+  line-height: 150%;
   margin-top: 5px;
 }
 
 .star-wrap {
   display: flex;
+}
+
+.star-wrap > b {
+  font-size: large;
 }
 
 .star-ratings {
