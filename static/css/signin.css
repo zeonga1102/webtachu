@@ -1,6 +1,7 @@
 body {
+    height: 886px;
     background-image: linear-gradient(to bottom, transparent, white 90%),
-    url("../img/background-img.jpg");
+    url("../img/sign-background-img.jpg");
     background-size: cover;
     background-repeat: no-repeat;
 }
