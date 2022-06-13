@@ -1,7 +1,6 @@
 from django.shortcuts import render
 from django.core.paginator import Paginator
 from books.models import BookModel
-from django.db import connection
 import requests
 from bs4 import BeautifulSoup
 from gensim.models.doc2vec import Doc2Vec
