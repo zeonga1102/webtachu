@@ -23,7 +23,6 @@
                         <p><a href="{% url 'genre' review.book.genre %}"><span
                                 class="genre-tag">{{ review.book.genre }}</span></a> | <b>글</b> {{ review.book.author }}
                             | <b>출판사</b> {{ review.book.publisher }}</p>
-                        {#                        <p><span class="star">{{ review.star }}</span></p>#}
                         <p>
                         <div class="star-ratings">
                             <div class="star-ratings-fill space-x" style="width: {{ review.star }}%">

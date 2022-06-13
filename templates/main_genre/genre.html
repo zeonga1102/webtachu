@@ -31,13 +31,11 @@
                             <div style="margin-bottom: 10px">&nbsp| {{ page.author }} | {{ page.publisher }}</div>
                         </div>
                         <div>
-                            {#                       |truncatechars:200 글자수 제한 코드 #}
                             {{ page.story |truncatechars:120 }}
                         </div>
                     </div>
                 </div>
             </a>
-{#            <hr class="genre_hr">#}
         {% endfor %}
 
         <div class="genre-paginator">

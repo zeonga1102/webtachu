@@ -1,6 +1,7 @@
 .space-x {
   font-size: large;
-  letter-spacing: 2px;  }
+  letter-spacing: 2px;
+}
 
 .mb10 {
   margin-bottom: 10px;
@@ -38,8 +39,7 @@
   margin: auto;
 }
 
-.book-profile
-{
+.book-profile {
   width: 1000px;
   display:flex;
   flex-direction: row;

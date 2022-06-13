@@ -1,4 +1,4 @@
-body{
+body {
     background-color: #f5f5f5;
 }
 
@@ -12,7 +12,7 @@ body{
     border: 2px solid #aff4c6;
 }
 
-.title_hr{
+.title_hr {
     margin-top: 2px;
     height: 2px;
     border: 0;
@@ -38,9 +38,8 @@ body{
 }
 
 .count_box {
-    margin: 10px 0px 10px 0px;
+    margin: 10px 0px 10px 30px;
     font-weight: bold;
-    margin-left: 30px;
 }
 
 .title_text {
@@ -57,7 +56,6 @@ body{
 .genre_cover_image > img {
     width: 100px;
 }
-
 
 .content_box {
     width: 750px;
