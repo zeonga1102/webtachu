@@ -122,9 +122,10 @@
 
 .star-wrap {
   display: flex;
+  align-items: center;
 }
 
-.star-wrap > b {
+.rating {
   font-size: large;
 }
 

@@ -20,8 +20,6 @@ body {
     /*background-color: #f3fdf5;*/
 }
 
-
-
 .border_solid {
     border: 1px solid red;
 }
@@ -85,6 +83,13 @@ body {
     display: flex;
     margin: auto;
     flex-flow: wrap;
+}
+
+.rating-s {
+    color: #2b2a29;
+    font-size: 16px;
+    vertical-align: center;
+    margin-left: 5px;
 }
 
 .star-ratings {
