@@ -96,7 +96,7 @@ def detail_view(request, id):
 
     review_info = {'reviews': reviews, 'count': reviews.count()}
 
-    return render(request, 'detail.html', {'book_info': book_info, 'review_info': review_info, 'is_favorite': is_favorite})
+    return render(request, 'detail/detail.html', {'book_info': book_info, 'review_info': review_info, 'is_favorite': is_favorite})
 
 
 def make_keyword(data, field, topn):
