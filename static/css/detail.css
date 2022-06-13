@@ -1,6 +1,7 @@
 * {
   font-family: "Yu Gothic";
 }
+
 .space-x {  letter-spacing: 5px;  }
 
 .mb10 {
@@ -13,7 +14,7 @@
   height: 2px;
   border: 0;
   opacity: initial;
-  background: linear-gradient(to right, #E4F9E6, #CBF2DD, #D2D4ED, #E2D1F5);
+  background: linear-gradient(to right, #d3f9e3, #CBF2DD, #D2D4ED, #ddb1f4);
 }
 
 .btn-01 {
@@ -22,7 +23,7 @@
   font-weight: bold;
   width: auto;
   height: auto;
-  border: solid 1px #E2D1F5;
+  border: solid 1px #ddb1f4;
   border-radius: 10px;
   line-height: 1.5;
   word-break: keep-all;
@@ -67,7 +68,7 @@
 
 .keyword-box > span {
   font-size: small;
-  border: solid 1px #E2D1F5;
+  border: solid 1px #e796f4;
   word-break: keep-all;
   line-height: 1.5;
   padding: 2px 6px;
@@ -78,10 +79,11 @@
 
 .favorite {
   margin: 20px 0 10px 0;
+  border: solid 1px #e796f4 !important;
 }
 
 .is-favorite {
-  background-color: #E2D1F5;
+  background-color: #e796f4;
 }
 
 .story {
@@ -112,7 +114,7 @@
 .book-review {
   width: 900px;
   border: solid 2px;
-  border-image: linear-gradient(to right, #E4F9E6, #CBF2DD, #D2D4ED, #E2D1F5);
+  border-image: linear-gradient(to right, #d3f9e3, #CBF2DD, #D2D4ED, #ddb1f4);
   border-image-slice: 1;
   padding: 20px 20px 45px 20px;
   margin-bottom: 15px;
