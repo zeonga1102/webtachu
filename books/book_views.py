@@ -133,4 +133,3 @@ def book_favorite(request, id):
     else:
         user.favorite.add(book)
     return redirect('book_info', id)
-

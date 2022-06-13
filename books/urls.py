@@ -1,6 +1,5 @@
-from books import views
 from django.urls import path
-from . import book_views, review_views
+from . import book_views, review_views, views
 
 
 urlpatterns = [

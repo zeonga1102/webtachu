@@ -7,6 +7,7 @@ from bs4 import BeautifulSoup
 from gensim.models.doc2vec import Doc2Vec
 from .book_views import make_keyword
 
+
 model = Doc2Vec.load('model.doc2vec')
 
 
@@ -31,7 +32,7 @@ def main_view(request):
     user = request.user
 
     cursor = connection.cursor()
-    query = "SELECT * FROM users_favorite WHERE usermodel_id=%s" % (user.id)
+    query = "SELECT * FROM users_favorite WHERE usermodel_id=%s" % user.id
     cursor.execute(query)
     stocks = cursor.fetchall()
     stocks.sort(key=lambda x: -x[0])
@@ -74,9 +75,7 @@ def main_view(request):
 
 
 def search(request, title):
-    print(title)
     result = BookModel.objects.filter(title__icontains=title)
-    print(result)
     page = request.GET.get('page', 1)
     paginator = Paginator(result, 10)
     pages = paginator.page(page)

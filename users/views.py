@@ -1,10 +1,9 @@
 from django.shortcuts import render, redirect
-from .models import UserModel, ReviewModel, BookModel
+from .models import UserModel, ReviewModel
 from django.contrib.auth import get_user_model
 from django.contrib import auth
 from django.contrib.auth.decorators import login_required
 from django.db import connection
-import os
 from books.book_views import make_keyword
 
 
@@ -33,7 +32,6 @@ def sign_up_view(request):
             if exist_user:
                 return render(request, 'user/signup.html', {'error':'사용자가 존재합니다.'})
             else:
-                print(email, username, password)
                 UserModel.objects.create_user(email=email, username=username, password=password, first_name=first_name)
                 return redirect('/sign-in')
 
@@ -97,12 +95,11 @@ def mypage(request):
         count = {'fav': fav_cnt, 'rev': review_cnt}
 
         keyword = make_keyword(favorite_data, 'story', 10)
-        print(keyword)
 
         for review in reviews:
             review.star = review.star * 20
 
-    return render(request, 'user/mypage.html', {'reviews': reviews, 'favorite': favorite, 'count':count, 'keyword':keyword})
+    return render(request, 'user/mypage.html', {'reviews': reviews, 'favorite': favorite, 'count': count, 'keyword': keyword})
 
 
 @login_required
@@ -111,15 +108,15 @@ def my_favorites(request):
         user = request.user
         user_id = user.id
         cursor = connection.cursor()
-        query = "SELECT * FROM users_favorite WHERE usermodel_id=%s" % (user_id)
-        result = cursor.execute(query)
+        query = "SELECT * FROM users_favorite WHERE usermodel_id=%s" % user_id
+        cursor.execute(query)
         stocks = cursor.fetchall()
 
         stocks.sort(key=lambda x: -x[0])
         favorite = []
         for i in range(len(stocks)):
             favorite.append(user.favorite.get(id=stocks[i][2]))
-        return render(request, 'user/favorites.html',{'favorite': favorite})
+        return render(request, 'user/favorites.html', {'favorite': favorite})
 
 
 @login_required
@@ -129,4 +126,4 @@ def my_reviews(request):
         reviews = ReviewModel.objects.filter(user=user)[::-1]
         for review in reviews:
             review.star = review.star * 20
-        return render(request, 'user/reviews.html',{'reviews': reviews})
+        return render(request, 'user/reviews.html', {'reviews': reviews})

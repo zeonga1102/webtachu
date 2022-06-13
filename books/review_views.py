@@ -48,7 +48,6 @@ def delete_review(request, book_id, review_id):
 @login_required
 def modify_review(request, book_id, review_id):
     origin_review = ReviewModel.objects.filter(id=review_id)
-    print(origin_review[0].star)
 
     if request.method == "POST":
         star = int(request.POST.get('rating', 0))
