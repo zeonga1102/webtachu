@@ -59,7 +59,7 @@ def logout(request):
 def home(request):
     user = request.user.is_authenticated
     if user:
-        return redirect('/book/main')
+        return redirect('/main')
     else:
         return redirect('/sign-in')
 
