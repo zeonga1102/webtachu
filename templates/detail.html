@@ -29,8 +29,8 @@
                 </div>
                 <div>
                     <div class="book-details mb10">
-                        <b>{{ book_info.book.genre }}</b> | <b>글</b> {{ book_info.book.author }} |
-                        <b>출판사</b> {{ book_info.book.publisher }}
+                        <b>{{ book_info.book.genre }}&nbsp</b>&nbsp|&nbsp<b>&nbsp글&nbsp</b>&nbsp{{ book_info.book.author }} &nbsp|&nbsp
+                        <b> 출판사&nbsp</b>&nbsp{{ book_info.book.publisher }}
                     </div>
                     <div class="keyword-box">
                         {% for word in book_info.keyword %}
@@ -74,7 +74,7 @@
                     </div>
                     <div>
                         <div class="reviewer">
-                            <b>{{ review.user.username }}</b><span>| {{ review.date }}</span>
+                            <b>{{ review.user.username }}&nbsp</b><span>&nbsp| {{ review.date }}</span>
                         </div>
                         <div class="book-review-desc">
                             {{ review.desc|linebreaks }}
