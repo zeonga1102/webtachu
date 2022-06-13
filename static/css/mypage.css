@@ -31,7 +31,9 @@ a:hover {
 
 .genre-tag {
     border-radius: 5px;
-    background-color: #aff4c6;
+    background-color: rgb(176,255,255);
+    /*background-color: #A6E5E7;*/
+    /*background: linear-gradient(white 60%, #6DDB94);*/
     padding: 2px 4px;
 }
 
