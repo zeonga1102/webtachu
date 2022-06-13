@@ -90,3 +90,11 @@ body{
     z-index: 0;
     padding: 0;
 }
+
+.genre-paginator {
+    text-align: center;
+}
+
+.genre-paginator > a {
+    margin-right: 10px;
+}
