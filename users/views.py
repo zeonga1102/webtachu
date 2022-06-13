@@ -69,9 +69,8 @@ def mypage(request):
     if request.method == 'GET':
         user = request.user
 
-        user_id = user.id
         cursor = connection.cursor()
-        query = "SELECT * FROM users_favorite WHERE usermodel_id=%s" % user_id
+        query = "SELECT * FROM users_favorite WHERE usermodel_id=%s" % user.id
         cursor.execute(query)
         stocks = cursor.fetchall()
 
@@ -79,7 +78,6 @@ def mypage(request):
         if stocks_length > 5:
             stocks_length = 5
 
-        origin_stocks = stocks
         stocks.sort(key=lambda x: -x[0])
 
         review_data = ReviewModel.objects.filter(user=user)
@@ -88,9 +86,10 @@ def mypage(request):
         favorite = []
         for i in range(stocks_length):
             favorite.append(user.favorite.get(id=stocks[i][2]))
+
         reviews = review_data[::-1][:3]
 
-        fav_cnt = len(origin_stocks)
+        fav_cnt = favorite_data.count()
         review_cnt = review_data.count()
         count = {'fav': fav_cnt, 'rev': review_cnt}
 

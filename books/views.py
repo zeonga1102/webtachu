@@ -35,11 +35,12 @@ def main_view(request):
     query = "SELECT * FROM users_favorite WHERE usermodel_id=%s" % user.id
     cursor.execute(query)
     stocks = cursor.fetchall()
-    stocks.sort(key=lambda x: -x[0])
 
     stocks_length = len(stocks)
     if stocks_length > 5:
         stocks_length = 5
+
+    stocks.sort(key=lambda x: -x[0])
 
     favorite = []
     for i in range(stocks_length):
