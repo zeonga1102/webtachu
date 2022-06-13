@@ -37,18 +37,23 @@
                 선호작<span class="load"><a href="/mypage/favorite">전체보기</a></span>
             </div>
             <hr class="profile-hr">
-            <div class="book-box">
-                {% for fav in favorite %}
-                    <div class="book">
-                        <a href="{% url 'book_info' fav.id %}">
-                            <img src="{{ fav.cover }}"
-                                 alt="{{ fav.title }} 표지"><br>
-                            <p class="book-title-mypage"><b>{{ fav.title }}</b></p>
-                            <p class="book-author-mypage">{{ fav.author }}</p>
-                            <a href="{% url 'genre' fav.genre %}"><span class="genre-tag">{{ fav.genre }}</span></a>
-                        </a>
-                    </div>
-                {% endfor %}
+            <div class="book-box" style="min-height: 200px">
+                {% if favorite %}
+                    {% for fav in favorite %}
+                        <div class="book">
+                            <a href="{% url 'book_info' fav.id %}">
+                                <img src="{{ fav.cover }}"
+                                     alt="{{ fav.title }} 표지"><br>
+                                <p class="book-title-mypage"><b>{{ fav.title }}</b></p>
+                                <p class="book-author-mypage">{{ fav.author }}</p>
+                                <a href="{% url 'genre' fav.genre %}"><span class="genre-tag">{{ fav.genre }}</span></a>
+                            </a>
+                        </div>
+                    {% endfor %}
+                {% else %}
+                    <div class="mypage_like_text">좋아하는 작품을 찾아주세요!</div>
+                {% endif %}
+
             </div>
         </div>
     </section>

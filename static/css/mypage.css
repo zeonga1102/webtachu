@@ -126,3 +126,9 @@ a:hover {
 .review-detail-mypage {
     padding-left: 20px;
 }
+
+.mypage_like_text{
+    font-size: 20px;
+    font-weight: bold;
+    margin: auto;
+}

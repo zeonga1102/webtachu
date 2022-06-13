@@ -10,6 +10,7 @@
         <hr class="main_hr">
         <div class="profile_group" style="min-height: 200px">
             <div class="profile_group">
+                {% if likes %}
                 {% for like in likes %}
                     <div class="profile_box">
                         <a href="{% url 'book_info' like.id %}">
@@ -38,6 +39,9 @@
                         </a>
                     </div>
                 {% endfor %}
+                {% else %}
+            <div class="main_like_text">좋아하는 작품을 찾아주세요!</div>
+            {% endif %}
             </div>
         </div>
     </div>
