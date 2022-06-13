@@ -1,7 +1,12 @@
 .main_hr {
     margin: 5px auto 10px auto;
     width: 1200px;
-    border: 2px solid #6DDB94;
+    height: 2px;
+    border: 0;
+    background:
+    linear-gradient(to left, rgba(176,255,255,.8), rgba(176,255,255,0) 70.71%),
+    linear-gradient(to right, rgba(255, 206, 229, .8), rgba(255, 206, 229, 0) 70.71%);
+    opacity: initial;
 }
 
 body {
