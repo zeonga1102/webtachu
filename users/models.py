@@ -21,3 +21,6 @@ class ReviewModel(models.Model):
     star = models.IntegerField()
     desc = models.TextField()
     date = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return f'{self.user}님이 {self.book.title}에 작성한 리뷰 - {self.desc}'

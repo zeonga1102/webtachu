@@ -14,3 +14,6 @@ class BookModel(models.Model):
     story = models.TextField()
     star = models.FloatField(default=0.0)
 
+    def __str__(self):
+        return f'[{self.genre}] {self.title}'
+
