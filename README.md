@@ -36,7 +36,6 @@
 ### Architecture
 * 📀 Python
 * 💿 Django
-  * 💿 Django Rest Framework
 * 📀 SQLite
 * ⚙️ MeCab
 * ⚙️ Doc2Vec
