@@ -82,11 +82,11 @@ KoNLPy의 Mecab을 이용하여 각 소설의 줄거리를 형태소 단위로 �
 ![image](https://user-images.githubusercontent.com/104331869/185334447-e9eaabb2-c3e0-4d1a-95de-5bb09921b73a.png)
 
 # 🛠Troubleshooting
-### 최근 좋아요 누른 작품 최신순 정렬
+### 1. 최근 좋아요 누른 작품 최신순 정렬
 모델을 만들 때 좋아요는 UserModel 아래에 ManyToManyField로 BookModel을 참조하도록 만들었습니다. 저장과 조회, 추천 작품 선정은 무리 없이 되지만 정렬이 문제였습니다. 좋아요를 누른 순서대로 정렬이 됐으면 해서 처음에는 orderby를 이용해서 id로 정렬을 했는데 중간 테이블인 user_favorite의 id로 정렬이 되는게 아니라 BookModel의 id로 정렬이 되어 최신순 정렬이 되지 않아 슬라이싱을 이용해서 역순으로 바꿔보기도 했습니다. 하지만 그래도 원하는대로 정렬이 되지 않았습니다. 그래서 raw query를 이용해 중간 테이블에 접근하여 해결했습니다.<br>
 [📑코드](https://github.com/zeonga1102/webtachu/blob/master/users/views.py#L118)
 
-### attributeerror: 'doc2vec' object has no attribute 'dv'
+### 2. attributeerror: 'doc2vec' object has no attribute 'dv'
 프로젝트에서 Doc2Vec을 import 하고 모델을 불러오기만 했는데 에러가 발생했습니다. 에러 메세지를 보니 dv라는 속성이 없다는데 gensim 버전이 업데이트가 되면서 dv가 decvecs로 바뀌었다고 합니다. 그래서 gensim을 3.8.3 버전으로 다운그레이드 해서 해결했습니다.
 
 # 🖋회고
